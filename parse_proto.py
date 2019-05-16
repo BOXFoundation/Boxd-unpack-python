@@ -8,7 +8,7 @@ import shutil
 
 
 # setting
-rootdir = "/Users/apple/workspace/box-hi/boxd"
+rootdir = "/Users/apple/workspace/boxd"
 
 if  len(sys.argv) < 2:
     print ("Usage: python parse_proto.py  boxd_path")

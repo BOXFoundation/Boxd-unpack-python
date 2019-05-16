@@ -331,6 +331,20 @@ class BoxdClient:
         else:
             raise BoxdError(resp.message)
 
+    def send_raw_transaction(self, transaction):
+        '''
+        Send raw transaction to the chain
+        :param transaction:
+        :return:
+        '''
+
+        req = tx.SendRawTransactionReq(tx=transaction)
+        resp = self.tx_stub.SendRawTransaction(req)
+        if resp.code == 0:
+            return resp.hash
+        else:
+            raise BoxdError(resp.message)
+
     def send_transaction(self, transaction):
         '''
         Send transaction to the chain, it will come into the memory pool

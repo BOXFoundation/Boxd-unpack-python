@@ -17,11 +17,15 @@ fi
 # get proto files 
 python3 parse_proto.py  $1
 
+
+
 # compile python files
 #protoc -I=proto/ --python_out=python_proto proto/*.proto
+echo "\n\n===============generate python files=============="
 python3 -m grpc_tools.protoc  --python_out=proto/ --grpc_python_out=proto/ -Iproto/ proto/*.proto
 
 # cp
+echo "\n\n===============replace python files=============="
 rm boxd_client/protocol/generated/*
 cp proto/block*.py  proto/common*.py  proto/control*.py  proto/faucet*.py  proto/transaction*.py  proto/web*.py  boxd_client/protocol/generated/
 touch boxd_client/protocol/generated/__init__.py
