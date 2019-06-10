@@ -34,6 +34,11 @@ class TransactionCommandStub(object):
         request_serializer=transaction__pb2.SendTransactionReq.SerializeToString,
         response_deserializer=transaction__pb2.SendTransactionResp.FromString,
         )
+    self.SendRawTransaction = channel.unary_unary(
+        '/rpcpb.TransactionCommand/SendRawTransaction',
+        request_serializer=transaction__pb2.SendRawTransactionReq.SerializeToString,
+        response_deserializer=transaction__pb2.SendTransactionResp.FromString,
+        )
     self.GetRawTransaction = channel.unary_unary(
         '/rpcpb.TransactionCommand/GetRawTransaction',
         request_serializer=transaction__pb2.GetRawTransactionRequest.SerializeToString,
@@ -59,15 +64,15 @@ class TransactionCommandStub(object):
         request_serializer=transaction__pb2.MakeTokenIssueTxReq.SerializeToString,
         response_deserializer=transaction__pb2.MakeTokenIssueTxResp.FromString,
         )
-    self.SendRawTransaction = channel.unary_unary(
-        '/rpcpb.TransactionCommand/SendRawTransaction',
-        request_serializer=transaction__pb2.SendRawTransactionReq.SerializeToString,
-        response_deserializer=transaction__pb2.SendTransactionResp.FromString,
-        )
     self.MakeUnsignedTokenTransferTx = channel.unary_unary(
         '/rpcpb.TransactionCommand/MakeUnsignedTokenTransferTx',
         request_serializer=transaction__pb2.MakeTokenTransferTxReq.SerializeToString,
         response_deserializer=transaction__pb2.MakeTxResp.FromString,
+        )
+    self.MakeUnsignedContractTx = channel.unary_unary(
+        '/rpcpb.TransactionCommand/MakeUnsignedContractTx',
+        request_serializer=transaction__pb2.MakeContractTxReq.SerializeToString,
+        response_deserializer=transaction__pb2.MakeContractTxResp.FromString,
         )
 
 
@@ -115,6 +120,18 @@ class TransactionCommandServicer(object):
     """rpc SendTransaction (SendTransactionReq) returns (SendTransactionResp) {
     option (google.api.http) = {
     post: "/v1/tx/sendtransaction"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def SendRawTransaction(self, request, context):
+    """rpc SendRawTransaction (SendRawTransactionReq) returns (SendTransactionResp) {
+    option (google.api.http) = {
+    post: "/v1/tx/sendrawtransaction"
     body: "*"
     };
     }
@@ -183,10 +200,10 @@ class TransactionCommandServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def SendRawTransaction(self, request, context):
-    """rpc SendRawTransaction (SendRawTransactionReq) returns (SendTransactionResp) {
+  def MakeUnsignedTokenTransferTx(self, request, context):
+    """rpc MakeUnsignedTokenTransferTx (MakeTokenTransferTxReq) returns (MakeTxResp) {
     option (google.api.http) = {
-    post: "/v1/tx/sendrawtransaction"
+    post: "/v1/tx/makeunsignedtx/token/transfer"
     body: "*"
     };
     }
@@ -195,10 +212,10 @@ class TransactionCommandServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def MakeUnsignedTokenTransferTx(self, request, context):
-    """rpc MakeUnsignedTokenTransferTx (MakeTokenTransferTxReq) returns (MakeTxResp) {
+  def MakeUnsignedContractTx(self, request, context):
+    """rpc MakeUnsignedContractTx (MakeContractTxReq) returns (MakeContractTxResp) {
     option (google.api.http) = {
-    post: "/v1/tx/makeunsignedtx/token/transfer"
+    post: "/v1/tx/makeunsignedtx/contract"
     body: "*"
     };
     }
@@ -230,6 +247,11 @@ def add_TransactionCommandServicer_to_server(servicer, server):
           request_deserializer=transaction__pb2.SendTransactionReq.FromString,
           response_serializer=transaction__pb2.SendTransactionResp.SerializeToString,
       ),
+      'SendRawTransaction': grpc.unary_unary_rpc_method_handler(
+          servicer.SendRawTransaction,
+          request_deserializer=transaction__pb2.SendRawTransactionReq.FromString,
+          response_serializer=transaction__pb2.SendTransactionResp.SerializeToString,
+      ),
       'GetRawTransaction': grpc.unary_unary_rpc_method_handler(
           servicer.GetRawTransaction,
           request_deserializer=transaction__pb2.GetRawTransactionRequest.FromString,
@@ -255,15 +277,15 @@ def add_TransactionCommandServicer_to_server(servicer, server):
           request_deserializer=transaction__pb2.MakeTokenIssueTxReq.FromString,
           response_serializer=transaction__pb2.MakeTokenIssueTxResp.SerializeToString,
       ),
-      'SendRawTransaction': grpc.unary_unary_rpc_method_handler(
-          servicer.SendRawTransaction,
-          request_deserializer=transaction__pb2.SendRawTransactionReq.FromString,
-          response_serializer=transaction__pb2.SendTransactionResp.SerializeToString,
-      ),
       'MakeUnsignedTokenTransferTx': grpc.unary_unary_rpc_method_handler(
           servicer.MakeUnsignedTokenTransferTx,
           request_deserializer=transaction__pb2.MakeTokenTransferTxReq.FromString,
           response_serializer=transaction__pb2.MakeTxResp.SerializeToString,
+      ),
+      'MakeUnsignedContractTx': grpc.unary_unary_rpc_method_handler(
+          servicer.MakeUnsignedContractTx,
+          request_deserializer=transaction__pb2.MakeContractTxReq.FromString,
+          response_serializer=transaction__pb2.MakeContractTxResp.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

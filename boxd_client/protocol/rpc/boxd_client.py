@@ -470,7 +470,7 @@ class BoxdClient:
             raise ValidationError("fee must >= 0")
 
         token = tx.TokenTag(name = name, symbol = symbol, supply = supply, decimal = decimal)
-        req = tx.MakeTokenIssueTxReq(issuer = issuer, owner = owner, tag = token, fee = fee)
+        req = tx.MakeTokenIssueTxReq(issuer = issuer, owner = owner, tag = token, gas_price = fee)
         return self.tx_stub.MakeUnsignedTokenIssueTx(req)
 
     def make_unsigned_token_transfer_tx(self, _from, to, token_hash, token_index, fee):
@@ -504,12 +504,27 @@ class BoxdClient:
             amounts.append(v)
         req = tx.MakeTokenTransferTxReq()
         setattr(req, 'from', _from)
-        setattr(req, 'fee', fee)
+        setattr(req, 'gas_price', fee)
         req.to.extend(to_addrs)
         req.amounts.extend(amounts)
         setattr(req, 'token_hash', token_hash)
         setattr(req, 'token_index', token_index)
         return self.tx_stub.MakeUnsignedTokenTransferTx(req)
+
+    def getNonce(self, addr):
+        resp = self.web_stub.Nonce(web.NonceReq(addr=addr))
+        if resp.code == 0:
+            return resp.nonce
+        raise BoxdError(resp.message)
+
+    def make_unsigned_contract_tx(self, sender, nonce, data, amount=0, gas_price=10, gas_limit=200000, is_deployed=False, contract_addr=None):
+        if not is_valid_addr(sender):
+            raise ValidationError("Not a valid addr of from")
+
+        if nonce < 1:
+            raise ValidationError("nonce must > 0")
+
+        return self.tx_stub.MakeUnsignedContractTx(sender=sender, amount=amount, gas_price=gas_price, gas_limit=gas_limit, nonce=nonce, is_deployed=is_deployed, data=data)
 
     #################################################################
     ####   utils related api

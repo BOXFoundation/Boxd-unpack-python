@@ -29,6 +29,16 @@ class WebApiStub(object):
         request_serializer=web__pb2.ListenBlocksReq.SerializeToString,
         response_deserializer=web__pb2.BlockDetail.FromString,
         )
+    self.DoCall = channel.unary_unary(
+        '/rpcpb.WebApi/DoCall',
+        request_serializer=web__pb2.CallReq.SerializeToString,
+        response_deserializer=web__pb2.CallResp.FromString,
+        )
+    self.Nonce = channel.unary_unary(
+        '/rpcpb.WebApi/Nonce',
+        request_serializer=web__pb2.NonceReq.SerializeToString,
+        response_deserializer=web__pb2.NonceResp.FromString,
+        )
 
 
 class WebApiServicer(object):
@@ -66,6 +76,30 @@ class WebApiServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def DoCall(self, request, context):
+    """rpc DoCall (CallReq) returns (CallResp) {
+    option (google.api.http) = {
+    post: "/v1/contract/call"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def Nonce(self, request, context):
+    """rpc Nonce (NonceReq) returns (NonceResp) {
+    option (google.api.http) = {
+    post: "/v1/account/nonce"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_WebApiServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -83,6 +117,16 @@ def add_WebApiServicer_to_server(servicer, server):
           servicer.ListenAndReadNewBlock,
           request_deserializer=web__pb2.ListenBlocksReq.FromString,
           response_serializer=web__pb2.BlockDetail.SerializeToString,
+      ),
+      'DoCall': grpc.unary_unary_rpc_method_handler(
+          servicer.DoCall,
+          request_deserializer=web__pb2.CallReq.FromString,
+          response_serializer=web__pb2.CallResp.SerializeToString,
+      ),
+      'Nonce': grpc.unary_unary_rpc_method_handler(
+          servicer.Nonce,
+          request_deserializer=web__pb2.NonceReq.FromString,
+          response_serializer=web__pb2.NonceResp.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
