@@ -1,0 +1,395 @@
+from web3 import Web3
+from web3.contract import Contract
+from boxd_client.util.hexadecimal import bytes_to_hex
+import time
+import json
+
+
+# class BoxdContract(Contract):
+#     '''
+#     boxd contract implication
+#     '''
+#
+#
+#     def __init__(self, address=None, **kwargs):
+#         '''
+#         SuperClass.__init__(self, x)
+#         or
+#
+#         super(SubClass,self).__init__( x )
+#
+#         :param address:
+#         :param kwargs:
+#         '''
+#         Contract.__init__(address, kwargs)
+#         # or
+#         #super(Contract, self).__init__(address, kwargs)
+
+
+abi = [
+    {
+        "constant": False,
+        "inputs": [
+            {
+                "name": "_u",
+                "type": "uint256"
+            }
+        ],
+        "name": "getData",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256[]"
+            }
+        ],
+        "payable": False,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": True,
+        "inputs": [
+            {
+                "name": "a",
+                "type": "uint256"
+            },
+            {
+                "name": "b",
+                "type": "uint256"
+            }
+        ],
+        "name": "getMax",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": False,
+        "stateMutability": "pure",
+        "type": "function"
+    },
+    {
+        "constant": True,
+        "inputs": [
+            {
+                "name": "t",
+                "type": "uint256"
+            }
+        ],
+        "name": "test",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": False,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": False,
+        "inputs": [],
+        "name": "getAAA",
+        "outputs": [
+            {
+                "name": "",
+                "type": "string[]"
+            }
+        ],
+        "payable": False,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": True,
+        "inputs": [
+            {
+                "name": "u",
+                "type": "bytes31[2]"
+            }
+        ],
+        "name": "setSimpleData",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bytes31[2]"
+            }
+        ],
+        "payable": False,
+        "stateMutability": "pure",
+        "type": "function"
+    },
+    {
+        "constant": True,
+        "inputs": [],
+        "name": "addr",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "payable": False,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": False,
+        "inputs": [
+            {
+                "name": "s",
+                "type": "string"
+            }
+        ],
+        "name": "setGreet",
+        "outputs": [],
+        "payable": False,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": True,
+        "inputs": [],
+        "name": "getAddr",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "payable": False,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": True,
+        "inputs": [
+            {
+                "name": "_u",
+                "type": "uint256[]"
+            }
+        ],
+        "name": "setData",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256[]"
+            }
+        ],
+        "payable": False,
+        "stateMutability": "pure",
+        "type": "function"
+    },
+    {
+        "constant": True,
+        "inputs": [],
+        "name": "greet",
+        "outputs": [
+            {
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "payable": False,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": True,
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "aaa",
+        "outputs": [
+            {
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "payable": False,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": True,
+        "inputs": [],
+        "name": "greeting",
+        "outputs": [
+            {
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "payable": False,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": True,
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "data",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": False,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": False,
+        "inputs": [],
+        "name": "getStu",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "addr",
+                        "type": "address"
+                    },
+                    {
+                        "name": "u",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "",
+                "type": "tuple"
+            }
+        ],
+        "payable": False,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": True,
+        "inputs": [],
+        "name": "test",
+        "outputs": [
+            {
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "payable": False,
+        "stateMutability": "pure",
+        "type": "function"
+    },
+    {
+        "anonymous": False,
+        "inputs": [
+            {
+                "indexed": True,
+                "name": "u",
+                "type": "uint256"
+            }
+        ],
+        "name": "e",
+        "type": "event"
+    }
+]
+bin = "608060405234801561001057600080fd5b50611288806100206000396000f3fe6080604052600436106100d5576000357c0100000000000000000000000000000000000000000000000000000000900480630178fe3f146100da57806326b230201461011757806329e99f07146101545780632d3085f614610191578063624c6056146101bc578063767800de146101f95780639698086b14610224578063a74c2bb61461024d578063c87cfe6314610278578063cfae3217146102b5578063e7ee190e146102e0578063ef690cc01461031d578063f0ba844014610348578063f766061014610385578063f8a8fd6d146103b0575b600080fd5b3480156100e657600080fd5b5061010160048036036100fc9190810190610cdb565b6103db565b60405161010e9190610f95565b60405180910390f35b34801561012357600080fd5b5061013e60048036036101399190810190610d04565b610461565b60405161014b919061101d565b60405180910390f35b34801561016057600080fd5b5061017b60048036036101769190810190610cdb565b610475565b604051610188919061101d565b60405180910390f35b34801561019d57600080fd5b506101a6610480565b6040516101b39190610f73565b60405180910390f35b3480156101c857600080fd5b506101e360048036036101de9190810190610c30565b610649565b6040516101f09190610f58565b60405180910390f35b34801561020557600080fd5b5061020e610659565b60405161021b9190610f3d565b60405180910390f35b34801561023057600080fd5b5061024b60048036036102469190810190610c9a565b61067f565b005b34801561025957600080fd5b50610262610699565b60405161026f9190610f3d565b60405180910390f35b34801561028457600080fd5b5061029f600480360361029a9190810190610c59565b6106a1565b6040516102ac9190610f95565b60405180910390f35b3480156102c157600080fd5b506102ca6106ab565b6040516102d79190610fd9565b60405180910390f35b3480156102ec57600080fd5b5061030760048036036103029190810190610cdb565b61074d565b6040516103149190610fb7565b60405180910390f35b34801561032957600080fd5b50610332610808565b60405161033f9190610fb7565b60405180910390f35b34801561035457600080fd5b5061036f600480360361036a9190810190610cdb565b6108a6565b60405161037c919061101d565b60405180910390f35b34801561039157600080fd5b5061039a6108c9565b6040516103a79190610ffb565b60405180910390f35b3480156103bc57600080fd5b506103c5610961565b6040516103d29190610fd9565b60405180910390f35b60606003829080600181540180825580915050906001820390600052602060002001600090919290919091505550600380548060200260200160405190810160405280929190818152602001828054801561045557602002820191906000526020600020905b815481526020019060010190808311610441575b50505050509050919050565b600061046d838361099e565b905092915050565b600060649050919050565b606060028060018154018082558091505090600182039060005260206000200160006040805190810160405280600181526020017f6100000000000000000000000000000000000000000000000000000000000000815250909190915090805190602001906104f09291906109b8565b505060028060018154018082558091505090600182039060005260206000200160006040805190810160405280600181526020017f6200000000000000000000000000000000000000000000000000000000000000815250909190915090805190602001906105609291906109b8565b50506002805480602002602001604051908101604052809291908181526020016000905b82821015610640578382906000526020600020018054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561062c5780601f106106015761010080835404028352916020019161062c565b820191906000526020600020905b81548152906001019060200180831161060f57829003601f168201915b505050505081526020019060010190610584565b50505050905090565b610651610a38565b819050919050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b80600090805190602001906106959291906109b8565b5050565b600080905090565b6060819050919050565b606060008054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156107435780601f1061071857610100808354040283529160200191610743565b820191906000526020600020905b81548152906001019060200180831161072657829003601f168201915b5050505050905090565b60028181548110151561075c57fe5b906000526020600020016000915090508054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156108005780601f106107d557610100808354040283529160200191610800565b820191906000526020600020905b8154815290600101906020018083116107e357829003601f168201915b505050505081565b60008054600181600116156101000203166002900480601f01602080910402602001604051908101604052809291908181526020018280546001816001161561010002031660029004801561089e5780601f106108735761010080835404028352916020019161089e565b820191906000526020600020905b81548152906001019060200180831161088157829003601f168201915b505050505081565b6003818154811015156108b557fe5b906000526020600020016000915090505481565b6108d1610a5a565b6108d9610a5a565b6040805190810160405280600381526020017f6161610000000000000000000000000000000000000000000000000000000000815250816000018190525033816020019073ffffffffffffffffffffffffffffffffffffffff16908173ffffffffffffffffffffffffffffffffffffffff168152505060648160400181815250508091505090565b60606040805190810160405280600381526020017f6564660000000000000000000000000000000000000000000000000000000000815250905090565b6000818310156109ae57816109b0565b825b905092915050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f106109f957805160ff1916838001178555610a27565b82800160010185558215610a27579182015b82811115610a26578251825591602001919060010190610a0b565b5b509050610a349190610a92565b5090565b6040805190810160405280600290602082028038833980820191505090505090565b60606040519081016040528060608152602001600073ffffffffffffffffffffffffffffffffffffffff168152602001600081525090565b610ab491905b80821115610ab0576000816000905550600101610a98565b5090565b90565b600082601f8301121515610aca57600080fd5b6002610add610ad882611065565b611038565b91508183856020840282011115610af357600080fd5b60005b83811015610b235781610b098882610bb2565b845260208401935060208301925050600181019050610af6565b5050505092915050565b600082601f8301121515610b4057600080fd5b8135610b53610b4e82611087565b611038565b91508181835260208401935060208101905083856020840282011115610b7857600080fd5b60005b83811015610ba85781610b8e8882610c1c565b845260208401935060208301925050600181019050610b7b565b5050505092915050565b6000610bbe82356111c5565b905092915050565b600082601f8301121515610bd957600080fd5b8135610bec610be7826110af565b611038565b91508082526020830160208301858383011115610c0857600080fd5b610c138382846111fb565b50505092915050565b6000610c2882356111f1565b905092915050565b600060408284031215610c4257600080fd5b6000610c5084828501610ab7565b91505092915050565b600060208284031215610c6b57600080fd5b600082013567ffffffffffffffff811115610c8557600080fd5b610c9184828501610b2d565b91505092915050565b600060208284031215610cac57600080fd5b600082013567ffffffffffffffff811115610cc657600080fd5b610cd284828501610bc6565b91505092915050565b600060208284031215610ced57600080fd5b6000610cfb84828501610c1c565b91505092915050565b60008060408385031215610d1757600080fd5b6000610d2585828601610c1c565b9250506020610d3685828601610c1c565b9150509250929050565b610d498161115d565b82525050565b610d58816110ff565b610d61826110db565b60005b82811015610d9357610d77858351610e63565b610d8082611136565b9150602085019450600181019050610d64565b5050505050565b6000610da58261110a565b80845260208401935083602082028501610dbe856110e5565b60005b84811015610df7578383038852610dd9838351610ea8565b9250610de482611143565b9150602088019750600181019050610dc1565b508196508694505050505092915050565b6000610e1382611115565b808452602084019350610e25836110f2565b60005b82811015610e5757610e3b868351610f2e565b610e4482611150565b9150602086019550600181019050610e28565b50849250505092915050565b610e6c8161116f565b82525050565b6000610e7d8261112b565b808452610e9181602086016020860161120a565b610e9a8161123d565b602085010191505092915050565b6000610eb382611120565b808452610ec781602086016020860161120a565b610ed08161123d565b602085010191505092915050565b60006060830160008301518482036000860152610efb8282610ea8565b9150506020830151610f106020860182610d40565b506040830151610f236040860182610f2e565b508091505092915050565b610f37816111bb565b82525050565b6000602082019050610f526000830184610d40565b92915050565b6000604082019050610f6d6000830184610d4f565b92915050565b60006020820190508181036000830152610f8d8184610d9a565b905092915050565b60006020820190508181036000830152610faf8184610e08565b905092915050565b60006020820190508181036000830152610fd18184610ea8565b905092915050565b60006020820190508181036000830152610ff38184610e72565b905092915050565b600060208201905081810360008301526110158184610ede565b905092915050565b60006020820190506110326000830184610f2e565b92915050565b6000604051905081810181811067ffffffffffffffff8211171561105b57600080fd5b8060405250919050565b600067ffffffffffffffff82111561107c57600080fd5b602082029050919050565b600067ffffffffffffffff82111561109e57600080fd5b602082029050602081019050919050565b600067ffffffffffffffff8211156110c657600080fd5b601f19601f8301169050602081019050919050565b6000819050919050565b6000602082019050919050565b6000602082019050919050565b600060029050919050565b600081519050919050565b600081519050919050565b600081519050919050565b600081519050919050565b6000602082019050919050565b6000602082019050919050565b6000602082019050919050565b60006111688261119b565b9050919050565b60007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0082169050919050565b600073ffffffffffffffffffffffffffffffffffffffff82169050919050565b6000819050919050565b60007fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff0082169050919050565b6000819050919050565b82818337600083830152505050565b60005b8381101561122857808201518184015260208101905061120d565b83811115611237576000848401525b50505050565b6000601f19601f830116905091905056fea265627a7a72305820c03e2a02b621e7cf1c2c95642c67029452d1e9d5f5df231abb82be5773017cbc6c6578706572696d656e74616cf50037"
+
+
+# w3 = Web3(Web3.EthereumTesterProvider())
+w3 = Web3(Web3.IPCProvider('/Users/apple/blockchain/go-ethereum/build/bin/data/geth.ipc'))
+w3.eth.defaultAccount = w3.eth.accounts[0]
+print(w3.eth.defaultAccount)
+
+contractAddress = "0x7510A05240f5EFcA2653688d57b010A679cF0cD2"
+
+# Greeter = w3.eth.contract(abi=abi, bytecode=bin)
+contractAddress =  Web3.toChecksumAddress(contractAddress)
+greeter = w3.eth.contract(address=contractAddress, abi=abi)
+funs = greeter.all_functions()
+for f in funs:
+    #    address = None
+    # function_identifier = None
+    # web3 = None
+    # contract_abi = None
+    # abi = None
+    # transaction = None
+    # arguments = None
+    print("\n\n")
+    print(f.address)
+    print(f.function_identifier)
+    print(f.web3)
+    # print(f.contract_abi)
+    print(f.transaction)
+    print(f.arguments)
+    break
+
+r = greeter.functions.getAddr().call()
+print(r)
+
+
+import sys
+sys.exit(0)
+
+
+if contractAddress == "" or contractAddress is None:
+
+    Greeter = w3.eth.contract(abi=abi, bytecode=bin)
+    tx_hash = Greeter.constructor().transact()
+    tx_receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+
+    print(tx_hash)
+    print(tx_receipt)
+    contractAddress = tx_receipt.contractAddress
+    print(contractAddress)
+
+
+time.sleep(10)
+print("-------------------------------------------------------")
+
+contractAddress =  Web3.toChecksumAddress(contractAddress)
+greeter = w3.eth.contract(address=contractAddress, abi=abi)
+
+# greeter1 = BoxdContract(address=contractAddress, abi=abi)
+# print(greeter1.functions.test().call())
+
+# call
+print(greeter.functions.getAddr().call())
+print(greeter.functions.test().call())
+print(greeter.functions.getData(100).call())
+print(greeter.functions.getData(200).call())
+
+# update state
+
+tx_hash = greeter.functions.setData([1, 2, 3, 300]).transact()
+tx_receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+print(tx_hash)
+print(bytes_to_hex(tx_hash))
+print(greeter.functions.getData(400).call())
+
+
+print("==============================================================")
+count = 0
+while True:
+    count = count + 1
+    print(count)
+
+    print(greeter.functions.greet().call())
+    tx_hash = greeter.functions.setGreet("Jarvis, Welcome to our planet, " + str(count)).transact()
+    tx_receipt = w3.eth.waitForTransactionReceipt(tx_hash)
+    print(tx_hash)
+    print(bytes_to_hex(tx_hash))
+    print(greeter.functions.greet().call())
+
+    if count > 10:
+        break

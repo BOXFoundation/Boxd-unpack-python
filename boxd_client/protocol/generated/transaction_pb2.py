@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='rpcpb',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x11transaction.proto\x12\x05rpcpb\x1a\x0b\x62lock.proto\x1a\x0c\x63ommon.proto\"#\n\x15SendRawTransactionReq\x12\n\n\x02tx\x18\x01 \x01(\t\"\x1e\n\rGetBalanceReq\x12\r\n\x05\x61\x64\x64rs\x18\x01 \x03(\t\"A\n\x0eGetBalanceResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x10\n\x08\x62\x61lances\x18\x03 \x03(\x04\"L\n\x12GetTokenBalanceReq\x12\r\n\x05\x61\x64\x64rs\x18\x01 \x03(\t\x12\x12\n\ntoken_hash\x18\x02 \x01(\t\x12\x13\n\x0btoken_index\x18\x03 \x01(\r\"V\n\rFetchUtxosReq\x12\x0c\n\x04\x61\x64\x64r\x18\x01 \x01(\t\x12\x0e\n\x06\x61mount\x18\x02 \x01(\x04\x12\x12\n\ntoken_hash\x18\x03 \x01(\t\x12\x13\n\x0btoken_index\x18\x04 \x01(\r\"K\n\x0e\x46\x65tchUtxosResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1a\n\x05utxos\x18\x03 \x03(\x0b\x32\x0b.rpcpb.Utxo\"(\n\x18GetRawTransactionRequest\x12\x0c\n\x04hash\x18\x01 \x01(\x0c\"<\n\x19GetRawTransactionResponse\x12\x1f\n\x02tx\x18\x01 \x01(\x0b\x32\x13.corepb.Transaction\"5\n\x12SendTransactionReq\x12\x1f\n\x02tx\x18\x01 \x01(\x0b\x32\x13.corepb.Transaction\"B\n\x13SendTransactionResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0c\n\x04hash\x18\x03 \x01(\t\"\x14\n\x12GetFeePriceRequest\"+\n\x13GetFeePriceResponse\x12\x14\n\x0c\x62ox_per_byte\x18\x01 \x01(\x04\"I\n\tMakeTxReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\n\n\x02to\x18\x02 \x03(\t\x12\x0f\n\x07\x61mounts\x18\x03 \x03(\x04\x12\x11\n\tgas_price\x18\x04 \x01(\x04\"]\n\nMakeTxResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1f\n\x02tx\x18\x03 \x01(\x0b\x32\x13.corepb.Transaction\x12\x0f\n\x07rawMsgs\x18\x04 \x03(\x0c\"U\n\x12MakeSplitAddrTxReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\r\n\x05\x61\x64\x64rs\x18\x02 \x03(\t\x12\x0f\n\x07weights\x18\x03 \x03(\x04\x12\x11\n\tgas_price\x18\x04 \x01(\x04\"y\n\x13MakeSplitAddrTxResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x11\n\tsplitAddr\x18\x03 \x01(\t\x12\x1f\n\x02tx\x18\x04 \x01(\x0b\x32\x13.corepb.Transaction\x12\x0f\n\x07rawMsgs\x18\x05 \x03(\x0c\"e\n\x13MakeTokenIssueTxReq\x12\x0e\n\x06issuer\x18\x01 \x01(\t\x12\r\n\x05owner\x18\x02 \x01(\t\x12\x1c\n\x03tag\x18\x03 \x01(\x0b\x32\x0f.rpcpb.TokenTag\x12\x11\n\tgas_price\x18\x04 \x01(\x04\"\x80\x01\n\x14MakeTokenIssueTxResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x17\n\x0fissue_out_index\x18\x03 \x01(\r\x12\x1f\n\x02tx\x18\x04 \x01(\x0b\x32\x13.corepb.Transaction\x12\x0f\n\x07rawMsgs\x18\x05 \x03(\x0c\"\x7f\n\x16MakeTokenTransferTxReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\n\n\x02to\x18\x02 \x03(\t\x12\x0f\n\x07\x61mounts\x18\x03 \x03(\x04\x12\x12\n\ntoken_hash\x18\x04 \x01(\t\x12\x13\n\x0btoken_index\x18\x05 \x01(\r\x12\x11\n\tgas_price\x18\x06 \x01(\x04\"I\n\x08TokenTag\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06symbol\x18\x02 \x01(\t\x12\x0e\n\x06supply\x18\x03 \x01(\x04\x12\x0f\n\x07\x64\x65\x63imal\x18\x04 \x01(\r\"\xa2\x01\n\x11MakeContractTxReq\x12\x0e\n\x06sender\x18\x01 \x01(\t\x12\x0e\n\x06\x61mount\x18\x02 \x01(\x04\x12\x11\n\tgas_price\x18\x03 \x01(\x04\x12\x11\n\tgas_limit\x18\x04 \x01(\x04\x12\r\n\x05nonce\x18\x05 \x01(\x04\x12\x13\n\x0bis_deployed\x18\x06 \x01(\x08\x12\x15\n\rcontract_addr\x18\x07 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x08 \x01(\t\"|\n\x12MakeContractTxResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1f\n\x02tx\x18\x03 \x01(\x0b\x32\x13.corepb.Transaction\x12\x0f\n\x07rawMsgs\x18\x04 \x03(\x0c\x12\x15\n\rcontract_addr\x18\x05 \x01(\t2\x85\x07\n\x12TransactionCommand\x12\x39\n\nGetBalance\x12\x14.rpcpb.GetBalanceReq\x1a\x15.rpcpb.GetBalanceResp\x12\x43\n\x0fGetTokenBalance\x12\x19.rpcpb.GetTokenBalanceReq\x1a\x15.rpcpb.GetBalanceResp\x12\x39\n\nFetchUtxos\x12\x14.rpcpb.FetchUtxosReq\x1a\x15.rpcpb.FetchUtxosResp\x12H\n\x0fSendTransaction\x12\x19.rpcpb.SendTransactionReq\x1a\x1a.rpcpb.SendTransactionResp\x12N\n\x12SendRawTransaction\x12\x1c.rpcpb.SendRawTransactionReq\x1a\x1a.rpcpb.SendTransactionResp\x12V\n\x11GetRawTransaction\x12\x1f.rpcpb.GetRawTransactionRequest\x1a .rpcpb.GetRawTransactionResponse\x12\x44\n\x0bGetFeePrice\x12\x19.rpcpb.GetFeePriceRequest\x1a\x1a.rpcpb.GetFeePriceResponse\x12\x35\n\x0eMakeUnsignedTx\x12\x10.rpcpb.MakeTxReq\x1a\x11.rpcpb.MakeTxResp\x12P\n\x17MakeUnsignedSplitAddrTx\x12\x19.rpcpb.MakeSplitAddrTxReq\x1a\x1a.rpcpb.MakeSplitAddrTxResp\x12S\n\x18MakeUnsignedTokenIssueTx\x12\x1a.rpcpb.MakeTokenIssueTxReq\x1a\x1b.rpcpb.MakeTokenIssueTxResp\x12O\n\x1bMakeUnsignedTokenTransferTx\x12\x1d.rpcpb.MakeTokenTransferTxReq\x1a\x11.rpcpb.MakeTxResp\x12M\n\x16MakeUnsignedContractTx\x12\x18.rpcpb.MakeContractTxReq\x1a\x19.rpcpb.MakeContractTxRespb\x06proto3')
+  serialized_pb=_b('\n\x11transaction.proto\x12\x05rpcpb\x1a\x0b\x62lock.proto\x1a\x0c\x63ommon.proto\"#\n\x15SendRawTransactionReq\x12\n\n\x02tx\x18\x01 \x01(\t\"\x1e\n\rGetBalanceReq\x12\r\n\x05\x61\x64\x64rs\x18\x01 \x03(\t\"A\n\x0eGetBalanceResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x10\n\x08\x62\x61lances\x18\x03 \x03(\x04\"L\n\x12GetTokenBalanceReq\x12\r\n\x05\x61\x64\x64rs\x18\x01 \x03(\t\x12\x12\n\ntoken_hash\x18\x02 \x01(\t\x12\x13\n\x0btoken_index\x18\x03 \x01(\r\"V\n\rFetchUtxosReq\x12\x0c\n\x04\x61\x64\x64r\x18\x01 \x01(\t\x12\x0e\n\x06\x61mount\x18\x02 \x01(\x04\x12\x12\n\ntoken_hash\x18\x03 \x01(\t\x12\x13\n\x0btoken_index\x18\x04 \x01(\r\"K\n\x0e\x46\x65tchUtxosResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1a\n\x05utxos\x18\x03 \x03(\x0b\x32\x0b.rpcpb.Utxo\"(\n\x18GetRawTransactionRequest\x12\x0c\n\x04hash\x18\x01 \x01(\x0c\"<\n\x19GetRawTransactionResponse\x12\x1f\n\x02tx\x18\x01 \x01(\x0b\x32\x13.corepb.Transaction\"5\n\x12SendTransactionReq\x12\x1f\n\x02tx\x18\x01 \x01(\x0b\x32\x13.corepb.Transaction\"B\n\x13SendTransactionResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0c\n\x04hash\x18\x03 \x01(\t\"\x14\n\x12GetFeePriceRequest\"+\n\x13GetFeePriceResponse\x12\x14\n\x0c\x62ox_per_byte\x18\x01 \x01(\x04\"I\n\tMakeTxReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\n\n\x02to\x18\x02 \x03(\t\x12\x0f\n\x07\x61mounts\x18\x03 \x03(\x04\x12\x11\n\tgas_price\x18\x04 \x01(\x04\"]\n\nMakeTxResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1f\n\x02tx\x18\x03 \x01(\x0b\x32\x13.corepb.Transaction\x12\x0f\n\x07rawMsgs\x18\x04 \x03(\x0c\"U\n\x12MakeSplitAddrTxReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\r\n\x05\x61\x64\x64rs\x18\x02 \x03(\t\x12\x0f\n\x07weights\x18\x03 \x03(\x04\x12\x11\n\tgas_price\x18\x04 \x01(\x04\"y\n\x13MakeSplitAddrTxResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x11\n\tsplitAddr\x18\x03 \x01(\t\x12\x1f\n\x02tx\x18\x04 \x01(\x0b\x32\x13.corepb.Transaction\x12\x0f\n\x07rawMsgs\x18\x05 \x03(\x0c\"e\n\x13MakeTokenIssueTxReq\x12\x0e\n\x06issuer\x18\x01 \x01(\t\x12\r\n\x05owner\x18\x02 \x01(\t\x12\x1c\n\x03tag\x18\x03 \x01(\x0b\x32\x0f.rpcpb.TokenTag\x12\x11\n\tgas_price\x18\x04 \x01(\x04\"\x80\x01\n\x14MakeTokenIssueTxResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x17\n\x0fissue_out_index\x18\x03 \x01(\r\x12\x1f\n\x02tx\x18\x04 \x01(\x0b\x32\x13.corepb.Transaction\x12\x0f\n\x07rawMsgs\x18\x05 \x03(\x0c\"\x7f\n\x16MakeTokenTransferTxReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\n\n\x02to\x18\x02 \x03(\t\x12\x0f\n\x07\x61mounts\x18\x03 \x03(\x04\x12\x12\n\ntoken_hash\x18\x04 \x01(\t\x12\x13\n\x0btoken_index\x18\x05 \x01(\r\x12\x11\n\tgas_price\x18\x06 \x01(\x04\"I\n\x08TokenTag\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06symbol\x18\x02 \x01(\t\x12\x0e\n\x06supply\x18\x03 \x01(\x04\x12\x0f\n\x07\x64\x65\x63imal\x18\x04 \x01(\r\"\x93\x01\n\x11MakeContractTxReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\n\n\x02to\x18\x02 \x01(\t\x12\x0e\n\x06\x61mount\x18\x03 \x01(\x04\x12\x11\n\tgas_price\x18\x04 \x01(\x04\x12\x11\n\tgas_limit\x18\x05 \x01(\x04\x12\r\n\x05nonce\x18\x06 \x01(\x04\x12\x11\n\tis_deploy\x18\x07 \x01(\x08\x12\x0c\n\x04\x64\x61ta\x18\x08 \x01(\t\"|\n\x12MakeContractTxResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1f\n\x02tx\x18\x03 \x01(\x0b\x32\x13.corepb.Transaction\x12\x0f\n\x07rawMsgs\x18\x04 \x03(\x0c\x12\x15\n\rcontract_addr\x18\x05 \x01(\t2\x85\x07\n\x12TransactionCommand\x12\x39\n\nGetBalance\x12\x14.rpcpb.GetBalanceReq\x1a\x15.rpcpb.GetBalanceResp\x12\x43\n\x0fGetTokenBalance\x12\x19.rpcpb.GetTokenBalanceReq\x1a\x15.rpcpb.GetBalanceResp\x12\x39\n\nFetchUtxos\x12\x14.rpcpb.FetchUtxosReq\x1a\x15.rpcpb.FetchUtxosResp\x12H\n\x0fSendTransaction\x12\x19.rpcpb.SendTransactionReq\x1a\x1a.rpcpb.SendTransactionResp\x12N\n\x12SendRawTransaction\x12\x1c.rpcpb.SendRawTransactionReq\x1a\x1a.rpcpb.SendTransactionResp\x12V\n\x11GetRawTransaction\x12\x1f.rpcpb.GetRawTransactionRequest\x1a .rpcpb.GetRawTransactionResponse\x12\x44\n\x0bGetFeePrice\x12\x19.rpcpb.GetFeePriceRequest\x1a\x1a.rpcpb.GetFeePriceResponse\x12\x35\n\x0eMakeUnsignedTx\x12\x10.rpcpb.MakeTxReq\x1a\x11.rpcpb.MakeTxResp\x12P\n\x17MakeUnsignedSplitAddrTx\x12\x19.rpcpb.MakeSplitAddrTxReq\x1a\x1a.rpcpb.MakeSplitAddrTxResp\x12S\n\x18MakeUnsignedTokenIssueTx\x12\x1a.rpcpb.MakeTokenIssueTxReq\x1a\x1b.rpcpb.MakeTokenIssueTxResp\x12O\n\x1bMakeUnsignedTokenTransferTx\x12\x1d.rpcpb.MakeTokenTransferTxReq\x1a\x11.rpcpb.MakeTxResp\x12M\n\x16MakeUnsignedContractTx\x12\x18.rpcpb.MakeContractTxReq\x1a\x19.rpcpb.MakeContractTxRespb\x06proto3')
   ,
   dependencies=[block__pb2.DESCRIPTOR,common__pb2.DESCRIPTOR,])
 
@@ -922,51 +922,51 @@ _MAKECONTRACTTXREQ = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='sender', full_name='rpcpb.MakeContractTxReq.sender', index=0,
+      name='from', full_name='rpcpb.MakeContractTxReq.from', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='amount', full_name='rpcpb.MakeContractTxReq.amount', index=1,
-      number=2, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
+      name='to', full_name='rpcpb.MakeContractTxReq.to', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='gas_price', full_name='rpcpb.MakeContractTxReq.gas_price', index=2,
+      name='amount', full_name='rpcpb.MakeContractTxReq.amount', index=2,
       number=3, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='gas_limit', full_name='rpcpb.MakeContractTxReq.gas_limit', index=3,
+      name='gas_price', full_name='rpcpb.MakeContractTxReq.gas_price', index=3,
       number=4, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='nonce', full_name='rpcpb.MakeContractTxReq.nonce', index=4,
+      name='gas_limit', full_name='rpcpb.MakeContractTxReq.gas_limit', index=4,
       number=5, type=4, cpp_type=4, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='is_deployed', full_name='rpcpb.MakeContractTxReq.is_deployed', index=5,
-      number=6, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
+      name='nonce', full_name='rpcpb.MakeContractTxReq.nonce', index=5,
+      number=6, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='contract_addr', full_name='rpcpb.MakeContractTxReq.contract_addr', index=6,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
+      name='is_deploy', full_name='rpcpb.MakeContractTxReq.is_deploy', index=6,
+      number=7, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
@@ -990,7 +990,7 @@ _MAKECONTRACTTXREQ = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=1547,
-  serialized_end=1709,
+  serialized_end=1694,
 )
 
 
@@ -1048,8 +1048,8 @@ _MAKECONTRACTTXRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1711,
-  serialized_end=1835,
+  serialized_start=1696,
+  serialized_end=1820,
 )
 
 _FETCHUTXOSRESP.fields_by_name['utxos'].message_type = common__pb2._UTXO
@@ -1246,8 +1246,8 @@ _TRANSACTIONCOMMAND = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=1838,
-  serialized_end=2739,
+  serialized_start=1823,
+  serialized_end=2724,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBalance',

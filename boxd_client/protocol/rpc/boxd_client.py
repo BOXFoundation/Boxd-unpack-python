@@ -49,6 +49,8 @@ from boxd_client.exception.exceptions import (
     BoxdError
 )
 
+from boxd_client.protocol.core.contract.contract import Contract
+
 
 def format_json(j):
     ciphertext = j["crypto"]["ciphertext"]
@@ -75,6 +77,7 @@ class BoxdClient:
         self.control_stub = control_rpc.ContorlCommandStub(self.channel)
         self.web_stub = web_rpc.WebApiStub(self.channel)
         self.faucet_stub = faucet_rpc.FaucetStub(self.channel)
+        self.defaultContractFactory = Contract
 
 
     #################################################################
@@ -342,6 +345,7 @@ class BoxdClient:
         resp = self.tx_stub.SendRawTransaction(req)
         if resp.code == 0:
             return resp.hash
+            print(resp.message)
         else:
             raise BoxdError(resp.message)
 
@@ -511,6 +515,36 @@ class BoxdClient:
         setattr(req, 'token_index', token_index)
         return self.tx_stub.MakeUnsignedTokenTransferTx(req)
 
+    #################################################################
+    ####   contract related api
+    #################################################################
+    def do_call(self, _from, to, data):
+        '''
+        message CallReq {
+            string from = 1;
+            string to = 2;
+            string data = 3;
+            uint32 height = 4;
+            uint32 timeout = 5;
+        }
+
+        :return:
+        '''
+        req = web.CallReq()
+
+        setattr(req, "from", _from)
+        setattr(req, "to", to)
+        setattr(req, "data", data)
+        setattr(req, "height", 0)
+        # setattr(req, "timeout", "")
+
+        print("-------client docall:")
+        print (_from, to, data)
+
+        ret =  self.web_stub.DoCall(req)
+        print(ret)
+        return ret
+
     def getNonce(self, addr):
         resp = self.web_stub.Nonce(web.NonceReq(addr=addr))
         if resp.code == 0:
@@ -524,7 +558,28 @@ class BoxdClient:
         if nonce < 1:
             raise ValidationError("nonce must > 0")
 
-        return self.tx_stub.MakeUnsignedContractTx(sender=sender, amount=amount, gas_price=gas_price, gas_limit=gas_limit, nonce=nonce, is_deployed=is_deployed, data=data)
+        req = tx.MakeContractTxReq()
+        setattr(req, 'from', sender)
+        # setattr(req, 'to', )
+        setattr(req, 'amount', amount)
+        setattr(req, 'gas_price', gas_price)
+        setattr(req, 'gas_limit', gas_limit)
+        setattr(req, 'nonce', nonce)
+        setattr(req, 'is_deploy', is_deployed)
+        setattr(req, 'data', data)
+        return self.tx_stub.MakeUnsignedContractTx(req)
+
+    def contract(self, from_address, address=None,  **kwargs):
+        ContractFactoryClass = kwargs.pop('ContractFactoryClass', self.defaultContractFactory)
+        ContractFactory = ContractFactoryClass.factory(self, **kwargs)
+
+        if address:
+            return ContractFactory(from_address, address)
+        else:
+            return ContractFactory(from_address)
+
+    def setContractFactory(self, contractFactory):
+        self.defaultContractFactory = contractFactory
 
     #################################################################
     ####   utils related api

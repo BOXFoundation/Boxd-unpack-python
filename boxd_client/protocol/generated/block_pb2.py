@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='corepb',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0b\x62lock.proto\x12\x06\x63orepb\"\x93\x02\n\x0b\x42lockHeader\x12\x0f\n\x07version\x18\x01 \x01(\x05\x12\x17\n\x0fprev_block_hash\x18\x02 \x01(\x0c\x12\x10\n\x08txs_root\x18\x03 \x01(\x0c\x12\x19\n\x11internal_txs_root\x18\x04 \x01(\x0c\x12\x11\n\tutxo_root\x18\x05 \x01(\x0c\x12\x14\n\x0creceipt_hash\x18\x06 \x01(\x0c\x12\x12\n\ntime_stamp\x18\x07 \x01(\x03\x12\r\n\x05magic\x18\x08 \x01(\r\x12\x13\n\x0bperiod_hash\x18\t \x01(\x0c\x12\x17\n\x0f\x63\x61ndidates_hash\x18\n \x01(\x0c\x12\x11\n\troot_hash\x18\x0b \x01(\x0c\x12\x0e\n\x06height\x18\x0c \x01(\r\x12\x10\n\x08gas_used\x18\r \x01(\x04\"4\n\x10IrreversibleInfo\x12\x0c\n\x04hash\x18\x01 \x01(\x0c\x12\x12\n\nsignatures\x18\x02 \x03(\x0c\"\xc1\x01\n\x05\x42lock\x12#\n\x06header\x18\x01 \x01(\x0b\x32\x13.corepb.BlockHeader\x12 \n\x03txs\x18\x02 \x03(\x0b\x32\x13.corepb.Transaction\x12)\n\x0cinternal_txs\x18\x03 \x03(\x0b\x32\x13.corepb.Transaction\x12\x11\n\tsignature\x18\x04 \x01(\x0c\x12\x33\n\x11irreversible_info\x18\x05 \x01(\x0b\x32\x18.corepb.IrreversibleInfo\"\x94\x01\n\x0bTransaction\x12\x0f\n\x07version\x18\x01 \x01(\x05\x12\x19\n\x03vin\x18\x02 \x03(\x0b\x32\x0c.corepb.TxIn\x12\x1b\n\x04vout\x18\x03 \x03(\x0b\x32\r.corepb.TxOut\x12\x1a\n\x04\x64\x61ta\x18\x04 \x01(\x0b\x32\x0c.corepb.Data\x12\r\n\x05magic\x18\x05 \x01(\r\x12\x11\n\tlock_time\x18\x06 \x01(\x03\"V\n\x04TxIn\x12(\n\x0eprev_out_point\x18\x01 \x01(\x0b\x32\x10.corepb.OutPoint\x12\x12\n\nscript_sig\x18\x02 \x01(\x0c\x12\x10\n\x08sequence\x18\x03 \x01(\r\".\n\x05TxOut\x12\r\n\x05value\x18\x01 \x01(\x04\x12\x16\n\x0escript_pub_key\x18\x02 \x01(\x0c\"\'\n\x08OutPoint\x12\x0c\n\x04hash\x18\x01 \x01(\x0c\x12\r\n\x05index\x18\x02 \x01(\r\"%\n\x04\x44\x61ta\x12\x0c\n\x04type\x18\x01 \x01(\x05\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\x0c\"f\n\x08UtxoWrap\x12\x1d\n\x06output\x18\x01 \x01(\x0b\x32\r.corepb.TxOut\x12\x14\n\x0c\x62lock_height\x18\x02 \x01(\r\x12\x10\n\x08is_spent\x18\x03 \x01(\x08\x12\x13\n\x0bis_coinbase\x18\x04 \x01(\x08\x62\x06proto3')
+  serialized_pb=_b('\n\x0b\x62lock.proto\x12\x06\x63orepb\"\xa8\x02\n\x0b\x42lockHeader\x12\x0f\n\x07version\x18\x01 \x01(\x05\x12\x17\n\x0fprev_block_hash\x18\x02 \x01(\x0c\x12\x10\n\x08txs_root\x18\x03 \x01(\x0c\x12\x19\n\x11internal_txs_root\x18\x04 \x01(\x0c\x12\x11\n\tutxo_root\x18\x05 \x01(\x0c\x12\x14\n\x0creceipt_hash\x18\x06 \x01(\x0c\x12\x12\n\ntime_stamp\x18\x07 \x01(\x03\x12\r\n\x05magic\x18\x08 \x01(\r\x12\x13\n\x0bperiod_hash\x18\t \x01(\x0c\x12\x17\n\x0f\x63\x61ndidates_hash\x18\n \x01(\x0c\x12\x11\n\troot_hash\x18\x0b \x01(\x0c\x12\x0e\n\x06height\x18\x0c \x01(\r\x12\x10\n\x08gas_used\x18\r \x01(\x04\x12\x13\n\x0b\x62ook_keeper\x18\x0e \x01(\x0c\"4\n\x10IrreversibleInfo\x12\x0c\n\x04hash\x18\x01 \x01(\x0c\x12\x12\n\nsignatures\x18\x02 \x03(\x0c\"\xc1\x01\n\x05\x42lock\x12#\n\x06header\x18\x01 \x01(\x0b\x32\x13.corepb.BlockHeader\x12 \n\x03txs\x18\x02 \x03(\x0b\x32\x13.corepb.Transaction\x12)\n\x0cinternal_txs\x18\x03 \x03(\x0b\x32\x13.corepb.Transaction\x12\x11\n\tsignature\x18\x04 \x01(\x0c\x12\x33\n\x11irreversible_info\x18\x05 \x01(\x0b\x32\x18.corepb.IrreversibleInfo\"\x94\x01\n\x0bTransaction\x12\x0f\n\x07version\x18\x01 \x01(\x05\x12\x19\n\x03vin\x18\x02 \x03(\x0b\x32\x0c.corepb.TxIn\x12\x1b\n\x04vout\x18\x03 \x03(\x0b\x32\r.corepb.TxOut\x12\x1a\n\x04\x64\x61ta\x18\x04 \x01(\x0b\x32\x0c.corepb.Data\x12\r\n\x05magic\x18\x05 \x01(\r\x12\x11\n\tlock_time\x18\x06 \x01(\x03\"V\n\x04TxIn\x12(\n\x0eprev_out_point\x18\x01 \x01(\x0b\x32\x10.corepb.OutPoint\x12\x12\n\nscript_sig\x18\x02 \x01(\x0c\x12\x10\n\x08sequence\x18\x03 \x01(\r\".\n\x05TxOut\x12\r\n\x05value\x18\x01 \x01(\x04\x12\x16\n\x0escript_pub_key\x18\x02 \x01(\x0c\"\'\n\x08OutPoint\x12\x0c\n\x04hash\x18\x01 \x01(\x0c\x12\r\n\x05index\x18\x02 \x01(\r\"%\n\x04\x44\x61ta\x12\x0c\n\x04type\x18\x01 \x01(\x05\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\x0c\"f\n\x08UtxoWrap\x12\x1d\n\x06output\x18\x01 \x01(\x0b\x32\r.corepb.TxOut\x12\x14\n\x0c\x62lock_height\x18\x02 \x01(\r\x12\x10\n\x08is_spent\x18\x03 \x01(\x08\x12\x13\n\x0bis_coinbase\x18\x04 \x01(\x08\x62\x06proto3')
 )
 
 
@@ -123,6 +123,13 @@ _BLOCKHEADER = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='book_keeper', full_name='corepb.BlockHeader.book_keeper', index=13,
+      number=14, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -136,7 +143,7 @@ _BLOCKHEADER = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=24,
-  serialized_end=299,
+  serialized_end=320,
 )
 
 
@@ -173,8 +180,8 @@ _IRREVERSIBLEINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=301,
-  serialized_end=353,
+  serialized_start=322,
+  serialized_end=374,
 )
 
 
@@ -232,8 +239,8 @@ _BLOCK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=356,
-  serialized_end=549,
+  serialized_start=377,
+  serialized_end=570,
 )
 
 
@@ -298,8 +305,8 @@ _TRANSACTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=552,
-  serialized_end=700,
+  serialized_start=573,
+  serialized_end=721,
 )
 
 
@@ -343,8 +350,8 @@ _TXIN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=702,
-  serialized_end=788,
+  serialized_start=723,
+  serialized_end=809,
 )
 
 
@@ -381,8 +388,8 @@ _TXOUT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=790,
-  serialized_end=836,
+  serialized_start=811,
+  serialized_end=857,
 )
 
 
@@ -419,8 +426,8 @@ _OUTPOINT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=838,
-  serialized_end=877,
+  serialized_start=859,
+  serialized_end=898,
 )
 
 
@@ -457,8 +464,8 @@ _DATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=879,
-  serialized_end=916,
+  serialized_start=900,
+  serialized_end=937,
 )
 
 
@@ -509,8 +516,8 @@ _UTXOWRAP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=918,
-  serialized_end=1020,
+  serialized_start=939,
+  serialized_end=1041,
 )
 
 _BLOCK.fields_by_name['header'].message_type = _BLOCKHEADER
