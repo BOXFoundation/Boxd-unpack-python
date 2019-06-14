@@ -5,7 +5,6 @@ import copy
 import itertools
 
 from eth_abi import (
-    encode_abi as eth_abi_encode_abi,
     decode_abi,
 )
 from eth_abi.exceptions import (
@@ -32,7 +31,6 @@ from boxd_client.protocol.core.contract.abi import (
     check_if_arguments_can_be_encoded,
     fallback_func_abi_exists,
     filter_by_type,
-    get_abi_input_types,
     get_abi_output_types,
     get_constructor_abi,
     is_array_type,
@@ -77,7 +75,6 @@ from boxd_client.protocol.core.contract.function_identifiers import (
 from boxd_client.protocol.core.contract.normalizers import (
     BASE_RETURN_NORMALIZERS,
     normalize_abi,
-    normalize_address,
     normalize_bytecode,
 )
 from boxd_client.protocol.core.contract.transactions import (
@@ -101,9 +98,10 @@ class ContractFunctions:
     """Class containing contract function objects
     """
 
-    def __init__(self, abi, boxd, address=None):
+    def __init__(self, abi, boxd, from_address, address=None):
         self.abi = abi
         self.boxd = boxd
+        self.from_address = from_address
         self.address = address
 
         if self.abi:
@@ -115,6 +113,7 @@ class ContractFunctions:
                     ContractFunction.factory(
                         func['name'],
                         boxd=self.boxd,
+                        from_address=self.from_address,
                         contract_abi=self.abi,
                         address=self.address,
                         function_identifier=func['name']))
@@ -169,7 +168,8 @@ class ContractEvents:
 
     """
 
-    def __init__(self, abi, boxd, address=None):
+    def __init__(self, abi, boxd, from_address, address=None):
+        self.from_address = from_address
         if abi:
             self.abi = abi
             self._events = filter_by_type('event', self.abi)
@@ -180,6 +180,7 @@ class ContractEvents:
                     ContractEvent.factory(
                         event['name'],
                         boxd=boxd,
+                        from_address=self.from_address,
                         contract_abi=self.abi,
                         address=address,
                         event_name=event['name']))
@@ -265,9 +266,8 @@ class Contract:
             raise AttributeError(
                 'The `from_address` can\'t be None'
             )
-        print("//__init__:")
-        print(from_address)
         self.from_address = from_address
+
 
         """Create a new smart contract proxy object.
 
@@ -279,26 +279,24 @@ class Contract:
                 '`boxd.contract` interface to create your contract class.'
             )
 
-        # if address:
-        #     self.address = normalize_address(self.boxd.ens, address)
-        #
-        # if not self.address:
-        #     raise TypeError("The address argument is required to instantiate a contract.")
+        # if not address:
+        #      raise TypeError("The address argument is required to instantiate a contract.")
+        self.address = address
 
-        self.functions = ContractFunctions(self.abi, self.boxd, self.address)
-        self.caller = ContractCaller(self.abi, self.boxd, self.address)
+        print("Contract__init__:", self.from_address)
+        self.functions = ContractFunctions(self.abi, self.boxd, self.from_address, self.address)
+        self.caller = ContractCaller(self.abi, self.boxd, self.from_address, self.address)
         self.events = ContractEvents(self.abi, self.boxd, self.address)
-        self.fallback = Contract.get_fallback_function(self.abi, self.boxd, self.address)
+        self.fallback = Contract.get_fallback_function(self.abi, self.boxd,  self.address)
 
     @classmethod
-    def factory(cls, boxd, class_name=None, **kwargs):
+    def factory(cls, boxd, from_address, class_name=None, **kwargs):
 
         kwargs['boxd'] = boxd
+        kwargs['from_address'] = from_address
 
         normalizers = {
             'abi': normalize_abi,
-            # 'address': partial(normalize_address, kwargs['web3'].ens),
-            # 'address': kwargs['address'],
             'bytecode': normalize_bytecode,
             'bytecode_runtime': normalize_bytecode,
         }
@@ -309,9 +307,11 @@ class Contract:
             kwargs,
             normalizers=normalizers,
         )
-        contract.functions = ContractFunctions(contract.abi, contract.boxd)
-        contract.caller = ContractCaller(contract.abi, contract.boxd, contract.address)
-        contract.events = ContractEvents(contract.abi, contract.boxd)
+
+        print("Contract_factory: ", from_address)
+        contract.functions = ContractFunctions(contract.abi, contract.boxd, from_address)
+        contract.caller = ContractCaller(contract.abi, contract.boxd, from_address, contract.address)
+        contract.events = ContractEvents(contract.abi, contract.boxd, from_address)
         contract.fallback = Contract.get_fallback_function(contract.abi, contract.boxd)
 
         return contract
@@ -557,13 +557,19 @@ class ContractConstructor:
         return self.boxd.eth.estimateGas(estimate_gas_transaction)
 
     @combomethod
-    def transact(self, transaction=None):
-        if transaction is None:
-            transact_transaction = {}
-        else:
-            transact_transaction = dict(**transaction)
-            self.check_forbidden_keys_in_transaction(transact_transaction,
-                                                     ["data", "to"])
+    def transact(self, private_key=None):
+        transact_transaction = {}
+        # if transaction is None:
+        #     transact_transaction = {}
+        # else:
+        #     transact_transaction = dict(**transaction)
+        #     self.check_forbidden_keys_in_transaction(transact_transaction,
+        #                                              ["data", "to"])
+
+        if not private_key:
+            raise ValueError(
+                "Private key must be not None."
+            )
 
         if self.from_address is not empty:
             transact_transaction.setdefault('from', self.from_address)
@@ -573,23 +579,18 @@ class ContractConstructor:
         # TODO: handle asynchronous contract creation
         print(transact_transaction)
 
-        print("=======================================")
-        # private static String address = "b1ndoQmEd83y4Fza5PzbUQDYpT3mV772J5o";
-        # private static String privKey = "51bbcc29adedb59ef3e99d7f7b390517443dd121cc46424562f79619a642422c";
-        sender = "b1ndoQmEd83y4Fza5PzbUQDYpT3mV772J5o"
-        priv_key_hex = "51bbcc29adedb59ef3e99d7f7b390517443dd121cc46424562f79619a642422c"
-        balance = self.boxd.get_balance(sender)
+        balance = self.boxd.get_balance(self.from_address)
         print("balance:" + str(balance))
 
 
-        nonce = self.boxd.getNonce(sender) + 1
+        nonce = self.boxd.getNonce(self.from_address) + 1
         print("nonce:" + str(nonce))
         data = transact_transaction["data"][2:]
         print (data)
 
-        unsignedTx = self.boxd.make_unsigned_contract_tx(sender, nonce, data, amount=0, gas_price=20, gas_limit=5000000, is_deployed=True, contract_addr=None)
+        unsignedTx = self.boxd.make_unsigned_contract_tx(self.from_address, nonce, data, amount=0, gas_price=20, gas_limit=5000000, is_deployed=True, contract_addr=None)
         print(unsignedTx)
-        signedTx = self.boxd.sign_transaction(unsignedTx.tx, priv_key_hex, unsignedTx.rawMsgs)
+        signedTx = self.boxd.sign_transaction(unsignedTx.tx, private_key, unsignedTx.rawMsgs)
         print(signedTx)
         return self.boxd.send_transaction(signedTx)
 
@@ -755,6 +756,7 @@ class ContractFunction:
     A function accessed via the api contract.functions.myMethod(*args, **kwargs)
     is a subclass of this class.
     """
+    from_address = None
     address = None
     function_identifier = None
     boxd = None
@@ -833,26 +835,24 @@ class ContractFunction:
 
         if self.address:
             call_transaction.setdefault('to', self.address)
-        # todo
-        # if "" is not empty:
-        #     call_transaction.setdefault('from', "")
 
-        # if 'to' not in call_transaction:
-        #     if isinstance(self, type):
-        #         raise ValueError(
-        #             "When using `Contract.[methodtype].[method].call()` from"
-        #             " a contract factory you "
-        #             "must provide a `to` address with the transaction"
-        #         )
-        #     else:
-        #         raise ValueError(
-        #             "Please ensure that this contract instance has an address."
-        #         )
+        if 'to' not in call_transaction:
+            if isinstance(self, type):
+                raise ValueError(
+                    "When using `Contract.[methodtype].[method].call()` from"
+                    " a contract factory you "
+                    "must provide a `to` address with the transaction"
+                )
+            else:
+                raise ValueError(
+                    "Please ensure that this contract instance has an address."
+                )
 
         block_id = parse_block_identifier(self.boxd, block_identifier)
 
         return call_contract_function(
             self.boxd,
+            self.from_address,
             self.address,
             self._return_data_normalizers,
             self.function_identifier,
@@ -864,17 +864,28 @@ class ContractFunction:
             **self.kwargs
         )
 
-    def transact(self, transaction=None):
-        if transaction is None:
-            transact_transaction = {}
-        else:
-            transact_transaction = dict(**transaction)
+    def transact(self, private_key=None):
+        transact_transaction = {}
+        if not private_key:
+            raise ValueError(
+                "Private key must be not None."
+            )
+
+        # if transaction is None:
+        #     transact_transaction = {}
+        # else:
+        #     transact_transaction = dict(**transaction)
 
         if 'data' in transact_transaction:
             raise ValueError("Cannot set data in transact transaction")
 
         if self.address is not None:
+            print(self.address)
             transact_transaction.setdefault('to', self.address)
+        else:
+            raise ValueError(
+                "Please ensure that this contract instance is not None."
+            )
         # if self.boxd.eth.defaultAccount is not empty:
         #     transact_transaction.setdefault('from', self.boxd.eth.defaultAccount)
         # transact_transaction.setdefault("from", "")
@@ -894,6 +905,8 @@ class ContractFunction:
         return transact_with_contract_function(
             self.address,
             self.boxd,
+            self.from_address,
+            private_key,
             self.function_identifier,
             transact_transaction,
             self.contract_abi,
@@ -1004,6 +1017,7 @@ class ContractEvent:
     An event accessed via the api contract.events.myEvents(*args, **kwargs)
     is a subclass of this class.
     """
+    from_address = None
     address = None
     event_name = None
     boxd = None
@@ -1204,7 +1218,8 @@ class ContractEvent:
         return tuple(get_event_data(abi, entry) for entry in logs)
 
     @classmethod
-    def factory(cls, class_name, **kwargs):
+    def factory(cls, class_name, from_address,  **kwargs):
+        kwargs["from_address"] = from_address
         return PropertyCheckingFactory(class_name, (cls,), kwargs)
 
 
@@ -1233,10 +1248,12 @@ class ContractCaller:
     def __init__(self,
                  abi,
                  boxd,
+                 from_address,
                  address,
                  transaction=None,
                  block_identifier='latest'):
         self.boxd = boxd
+        self.from_address = from_address
         self.address = address
         self.abi = abi
         self._functions = None
@@ -1250,6 +1267,7 @@ class ContractCaller:
                 fn = ContractFunction.factory(
                     func['name'],
                     boxd=self.boxd,
+                    from_address=self.from_address,
                     contract_abi=self.abi,
                     address=self.address,
                     function_identifier=func['name'])
@@ -1317,6 +1335,7 @@ def check_for_forbidden_api_filter_arguments(event_abi, _filters):
 
 def call_contract_function(
         boxd,
+        from_address,
         address,
         normalizers,
         function_identifier,
@@ -1330,7 +1349,6 @@ def call_contract_function(
     Helper function for interacting with a contract function using the
     `eth_call` API.
     """
-    address = "b5qX4ERqHSkotLDFy5RsCFp4qjyYHaBk5dW"
     call_transaction = prepare_transaction(
         address,
         boxd,
@@ -1342,7 +1360,7 @@ def call_contract_function(
         fn_kwargs=kwargs,
     )
 
-    _return_data = boxd.do_call("b1USvtdkLrXXtzTfz8R5tpicJYobDbwuqeT", call_transaction["to"], call_transaction["data"][2:])
+    _return_data = boxd.do_call(from_address, call_transaction["to"], call_transaction["data"][2:])
     return_data = HexBytes.fromhex(_return_data)
 
     if fn_abi is None:
@@ -1410,8 +1428,10 @@ def parse_block_identifier_int(boxd, block_identifier_int):
 
 
 def transact_with_contract_function(
-        address,
+        contract_address,
         boxd,
+        from_address,
+        private_key,
         function_name=None,
         transaction=None,
         contract_abi=None,
@@ -1423,7 +1443,7 @@ def transact_with_contract_function(
     transaction.
     """
     transact_transaction = prepare_transaction(
-        address,
+        contract_address,
         boxd,
         fn_identifier=function_name,
         contract_abi=contract_abi,
@@ -1433,58 +1453,23 @@ def transact_with_contract_function(
         fn_kwargs=kwargs,
     )
 
-    address = "b5qX4ERqHSkotLDFy5RsCFp4qjyYHaBk5dW"
     print(transact_transaction)
-    sender = "b1USvtdkLrXXtzTfz8R5tpicJYobDbwuqeT"
-    priv_key_hex = "5ace780e4a6e17889a6b8697be6ba902936c148662cce65e6a3153431a1a77c1"
+    sender = from_address
     balance = boxd.get_balance(sender)
     print("balance:" + str(balance))
 
-
     nonce = boxd.getNonce(sender) + 1
-    print("nonce:" + str(nonce))
+    print("nonce:" , nonce)
+    print("contractaddress:", contract_address)
     data = transact_transaction["data"][2:]
-    print (data)
 
-    print(address)
-    unsignedTx = boxd.make_unsigned_contract_tx(sender, nonce, data, amount=0, gas_price=20, gas_limit=5000000, is_deployed=False, contract_addr=address)
-    print("unsigned:")
-    print(unsignedTx)
-    signedTx = boxd.sign_transaction(unsignedTx.tx, priv_key_hex, unsignedTx.rawMsgs)
-    print("signed:")
-    print(signedTx)
+    print("sender:", sender)
+
+    unsignedTx = boxd.make_unsigned_contract_tx(sender, nonce, data, amount=0, gas_price=20, gas_limit=5000000, is_deployed=False, contract_addr=contract_address)
+    signedTx = boxd.sign_transaction(unsignedTx.tx, private_key, unsignedTx.rawMsgs)
 
     txn_hash = boxd.send_transaction(signedTx)
     return txn_hash
-
-
-def estimate_gas_for_function(
-        address,
-        boxd,
-        fn_identifier=None,
-        transaction=None,
-        contract_abi=None,
-        fn_abi=None,
-        *args,
-        **kwargs):
-    """Estimates gas cost a function call would take.
-
-    Don't call this directly, instead use :meth:`Contract.estimateGas`
-    on your contract instance.
-    """
-    estimate_transaction = prepare_transaction(
-        address,
-        boxd,
-        fn_identifier=fn_identifier,
-        contract_abi=contract_abi,
-        fn_abi=fn_abi,
-        transaction=transaction,
-        fn_args=args,
-        fn_kwargs=kwargs,
-    )
-
-    gas_estimate = boxd.eth.estimateGas(estimate_transaction)
-    return gas_estimate
 
 
 def build_transaction_for_function(

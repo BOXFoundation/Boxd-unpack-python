@@ -538,12 +538,10 @@ class BoxdClient:
         setattr(req, "height", 0)
         # setattr(req, "timeout", "")
 
-        print("-------client docall:")
-        print (_from, to, data)
-
-        ret =  self.web_stub.DoCall(req)
-        print(ret)
-        return ret
+        resp =  self.web_stub.DoCall(req)
+        if resp.code == 0:
+            return resp.output
+        raise BoxdError(resp.message)
 
     def getNonce(self, addr):
         resp = self.web_stub.Nonce(web.NonceReq(addr=addr))
@@ -560,18 +558,20 @@ class BoxdClient:
 
         req = tx.MakeContractTxReq()
         setattr(req, 'from', sender)
-        # setattr(req, 'to', )
+
         setattr(req, 'amount', amount)
         setattr(req, 'gas_price', gas_price)
         setattr(req, 'gas_limit', gas_limit)
         setattr(req, 'nonce', nonce)
         setattr(req, 'is_deploy', is_deployed)
+        if not is_deployed:
+            setattr(req, 'to', contract_addr)
         setattr(req, 'data', data)
         return self.tx_stub.MakeUnsignedContractTx(req)
 
     def contract(self, from_address, address=None,  **kwargs):
         ContractFactoryClass = kwargs.pop('ContractFactoryClass', self.defaultContractFactory)
-        ContractFactory = ContractFactoryClass.factory(self, **kwargs)
+        ContractFactory = ContractFactoryClass.factory(self, from_address, **kwargs)
 
         if address:
             return ContractFactory(from_address, address)

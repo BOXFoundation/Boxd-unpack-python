@@ -1,6 +1,8 @@
 from boxd_client.protocol.rpc.boxd_client import BoxdClient
 # from sample.Sample_helper import view_tx
 
+import time
+
 abi = [
     {
         "constant": False,
@@ -316,22 +318,25 @@ from_address = "b1USvtdkLrXXtzTfz8R5tpicJYobDbwuqeT"
 boxd = BoxdClient(host="192.168.21.52", port=19191)
 # boxd = BoxdClient(host="39.97.168.26", port=19111)
 
-contract_address = "b5qX4ERqHSkotLDFy5RsCFp4qjyYHaBk5dW"
+contract_address = "b5mR7muxcFXfiHK1cYnECzHrMcA5qyjXbnv"
 
 if contract_address is None or contract_address == "":
     demo = boxd.contract(from_address, abi=abi, bytecode=bin)
 
     # deploy
-    tx_hash = demo.constructor().transact()
+    tx_hash = demo.constructor().transact(private_key=priv_key_hex)
     print(tx_hash)
 else:
     demo = boxd.contract(from_address, contract_address, abi=abi)
-    # # print(demo.functions.test(10).call())
-    print(demo.functions.getAddr().call())
+    # # # print(demo.functions.test(10).call())
+    # print(demo.functions.getAddr().call())
     print(demo.functions.greet().call())
-
-    tx_hash = demo.functions.setGreet("Jarvis").transact()
+    #
+    tx_hash = demo.functions.setGreet("Jarvis2").transact(private_key=priv_key_hex)
     print(tx_hash)
+
+    time.sleep(2)
+    print(demo.functions.greet().call())
 
 
 
