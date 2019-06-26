@@ -26,11 +26,12 @@ def is_ens_name(value):
 
 
 def validate_name_has_address(ens, name):
-    addr = ens.address(name)
-    if addr:
-        return addr
-    else:
-        raise NameNotFound("Could not find address for name %r" % name)
+    # addr = ens.address(name)
+    # if addr:
+    #     return addr
+    return name
+    # else:
+    #     raise NameNotFound("Could not find address for name %r" % name)
 
 
 class StaticENS:

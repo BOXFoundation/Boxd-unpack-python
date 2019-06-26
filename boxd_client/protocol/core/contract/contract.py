@@ -25,7 +25,6 @@ from eth_utils.toolz import (
 from hexbytes import (
     HexBytes,
 )
-
 from boxd_client.protocol.core.contract.abi import (
     abi_to_signature,
     check_if_arguments_can_be_encoded,
@@ -231,6 +230,7 @@ class Contract:
     # set during class construction
     boxd = None
 
+    # address for calling the contract
     from_address = None
 
     # instance level properties
@@ -279,11 +279,8 @@ class Contract:
                 '`boxd.contract` interface to create your contract class.'
             )
 
-        # if not address:
-        #      raise TypeError("The address argument is required to instantiate a contract.")
         self.address = address
 
-        print("Contract__init__:", self.from_address)
         self.functions = ContractFunctions(self.abi, self.boxd, self.from_address, self.address)
         self.caller = ContractCaller(self.abi, self.boxd, self.from_address, self.address)
         self.events = ContractEvents(self.abi, self.boxd, self.address)
@@ -307,8 +304,6 @@ class Contract:
             kwargs,
             normalizers=normalizers,
         )
-
-        print("Contract_factory: ", from_address)
         contract.functions = ContractFunctions(contract.abi, contract.boxd, from_address)
         contract.caller = ContractCaller(contract.abi, contract.boxd, from_address, contract.address)
         contract.events = ContractEvents(contract.abi, contract.boxd, from_address)
@@ -331,9 +326,6 @@ class Contract:
                 "Cannot call constructor on a contract that does not have 'bytecode' associated "
                 "with it"
             )
-
-        print("//constructor:")
-        print(cls.from_address)
         return ContractConstructor(cls.boxd,
                                    cls.from_address,
                                    cls.abi,
@@ -513,8 +505,6 @@ class ContractConstructor:
     Class for contract constructor API.
     """
     def __init__(self, boxd, from_address, abi, bytecode, *args, **kwargs):
-        print("##ContractConstructor##:")
-        print (from_address)
         self.boxd = boxd
         self.from_address = from_address
         self.abi = abi
@@ -559,12 +549,6 @@ class ContractConstructor:
     @combomethod
     def transact(self, private_key=None):
         transact_transaction = {}
-        # if transaction is None:
-        #     transact_transaction = {}
-        # else:
-        #     transact_transaction = dict(**transaction)
-        #     self.check_forbidden_keys_in_transaction(transact_transaction,
-        #                                              ["data", "to"])
 
         if not private_key:
             raise ValueError(
@@ -576,30 +560,23 @@ class ContractConstructor:
 
         transact_transaction['data'] = self.data_in_transaction
 
-        # TODO: handle asynchronous contract creation
-        print(transact_transaction)
-
-        balance = self.boxd.get_balance(self.from_address)
-        print("balance:" + str(balance))
-
-
         nonce = self.boxd.getNonce(self.from_address) + 1
-        print("nonce:" + str(nonce))
         data = transact_transaction["data"][2:]
-        print (data)
 
-        unsignedTx = self.boxd.make_unsigned_contract_tx(self.from_address, nonce, data, amount=0, gas_price=20, gas_limit=5000000, is_deployed=True, contract_addr=None)
-        print(unsignedTx)
-        signedTx = self.boxd.sign_transaction(unsignedTx.tx, private_key, unsignedTx.rawMsgs)
-        print(signedTx)
-        return self.boxd.send_transaction(signedTx)
+        unsigned_tx = self.boxd.make_unsigned_contract_tx(self.from_address, nonce, data,
+                                                         amount=0, gas_price=20, gas_limit=5000000,
+                                                         is_deployed=True, contract_addr=None)
+
+        print(unsigned_tx)
+        signed_tx = self.boxd.sign_transaction(unsigned_tx.tx, private_key, unsigned_tx.rawMsgs)
+        tx_hash = self.boxd.send_transaction(signed_tx)
+        return (tx_hash, unsigned_tx.contract_addr)
 
     @combomethod
     def buildTransaction(self, transaction=None):
         """
         Build the transaction dictionary without sending
         """
-
         if transaction is None:
             built_transaction = {}
         else:
@@ -866,31 +843,27 @@ class ContractFunction:
 
     def transact(self, private_key=None):
         transact_transaction = {}
+
         if not private_key:
             raise ValueError(
                 "Private key must be not None."
             )
 
-        # if transaction is None:
-        #     transact_transaction = {}
-        # else:
-        #     transact_transaction = dict(**transaction)
-
         if 'data' in transact_transaction:
             raise ValueError("Cannot set data in transact transaction")
 
         if self.address is not None:
-            print(self.address)
             transact_transaction.setdefault('to', self.address)
         else:
             raise ValueError(
                 "Please ensure that this contract instance is not None."
             )
-        # if self.boxd.eth.defaultAccount is not empty:
-        #     transact_transaction.setdefault('from', self.boxd.eth.defaultAccount)
-        # transact_transaction.setdefault("from", "")
 
-        transact_transaction["to"] = "b5qX4ERqHSkotLDFy5RsCFp4qjyYHaBk5dW"
+        if self.from_address is None:
+            raise ValueError(
+                "Please ensure that from_address is not None."
+            )
+
         if 'to' not in transact_transaction:
             if isinstance(self, type):
                 raise ValueError(
@@ -1453,22 +1426,15 @@ def transact_with_contract_function(
         fn_kwargs=kwargs,
     )
 
-    print(transact_transaction)
-    sender = from_address
-    balance = boxd.get_balance(sender)
-    print("balance:" + str(balance))
-
-    nonce = boxd.getNonce(sender) + 1
-    print("nonce:" , nonce)
-    print("contractaddress:", contract_address)
+    nonce = boxd.getNonce(from_address) + 1
     data = transact_transaction["data"][2:]
 
-    print("sender:", sender)
+    unsigned_tx = boxd.make_unsigned_contract_tx(from_address, nonce, data,
+                                                amount=0, gas_price=20, gas_limit=5000000,
+                                                is_deployed=False, contract_addr=contract_address)
+    signed_tx = boxd.sign_transaction(unsigned_tx.tx, private_key, unsigned_tx.rawMsgs)
 
-    unsignedTx = boxd.make_unsigned_contract_tx(sender, nonce, data, amount=0, gas_price=20, gas_limit=5000000, is_deployed=False, contract_addr=contract_address)
-    signedTx = boxd.sign_transaction(unsignedTx.tx, private_key, unsignedTx.rawMsgs)
-
-    txn_hash = boxd.send_transaction(signedTx)
+    txn_hash = boxd.send_transaction(signed_tx)
     return txn_hash
 
 

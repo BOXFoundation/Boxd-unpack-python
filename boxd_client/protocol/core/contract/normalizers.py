@@ -162,23 +162,24 @@ def abi_address_to_hex(type_str, data):
 @curry
 def abi_ens_resolver(w3, type_str, val):
     if type_str == 'address' and is_ens_name(val):
-        if w3 is None:
-            raise InvalidAddress(
-                "Could not look up name %r because no web3"
-                " connection available" % (val)
-            )
-        elif w3.ens is None:
-            raise InvalidAddress(
-                "Could not look up name %r because ENS is"
-                " set to None" % (val)
-            )
-        elif int(w3.net.version) is not 1 and not isinstance(w3.ens, StaticENS):
-            raise InvalidAddress(
-                "Could not look up name %r because web3 is"
-                " not connected to mainnet" % (val)
-            )
-        else:
-            return type_str, validate_name_has_address(w3.ens, val)
+        # if w3 is None:
+        #     raise InvalidAddress(
+        #         "Could not look up name %r because no web3"
+        #         " connection available" % (val)
+        #     )
+        # elif w3.ens is None:
+        #     raise InvalidAddress(
+        #         "Could not look up name %r because ENS is"
+        #         " set to None" % (val)
+        #     )
+        # elif int(w3.net.version) is not 1 and not isinstance(w3.ens, StaticENS):
+        #     raise InvalidAddress(
+        #         "Could not look up name %r because web3 is"
+        #         " not connected to mainnet" % (val)
+        #     )
+        # else:
+        #return type_str, validate_name_has_address(w3.ens, val)
+        return type_str , val
     else:
         return type_str, val
 
