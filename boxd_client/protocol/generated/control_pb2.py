@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='rpcpb',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\rcontrol.proto\x12\x05rpcpb\x1a\x0b\x62lock.proto\x1a\x0c\x63ommon.proto\"\"\n\x11\x44\x65\x62ugLevelRequest\x12\r\n\x05level\x18\x01 \x01(\t\"$\n\x16UpdateNetworkIDRequest\x12\n\n\x02id\x18\x01 \x01(\r\"\x15\n\x13GetNetworkIDRequest\"3\n\x14GetNetworkIDResponse\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0f\n\x07literal\x18\x02 \x01(\t\"\x1e\n\x0e\x41\x64\x64NodeRequest\x12\x0c\n\x04node\x18\x01 \x01(\t\"\x17\n\x15GetBlockHeightRequest\"G\n\x16GetBlockHeightResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0e\n\x06height\x18\x03 \x01(\r\"%\n\x13GetBlockHashRequest\x12\x0e\n\x06height\x18\x01 \x01(\r\"C\n\x14GetBlockHashResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0c\n\x04hash\x18\x03 \x01(\t\"%\n\x0fGetBlockRequest\x12\x12\n\nblock_hash\x18\x01 \x01(\t\"\\\n\x16GetBlockHeaderResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12#\n\x06header\x18\x03 \x01(\x0b\x32\x13.corepb.BlockHeader\"O\n\x10GetBlockResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1c\n\x05\x62lock\x18\x03 \x01(\x0b\x32\r.corepb.Block\".\n\x04Node\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x61\x64\x64rs\x18\x02 \x03(\t\x12\x0b\n\x03ttl\x18\x03 \x01(\t\"\x14\n\x12GetNodeInfoRequest\"1\n\x13GetNodeInfoResponse\x12\x1a\n\x05nodes\x18\x01 \x03(\x0b\x32\x0b.rpcpb.Node2\xfb\x04\n\x0e\x43ontorlCommand\x12>\n\rSetDebugLevel\x12\x18.rpcpb.DebugLevelRequest\x1a\x13.rpcpb.BaseResponse\x12\x45\n\x0fUpdateNetworkID\x12\x1d.rpcpb.UpdateNetworkIDRequest\x1a\x13.rpcpb.BaseResponse\x12G\n\x0cGetNetworkID\x12\x1a.rpcpb.GetNetworkIDRequest\x1a\x1b.rpcpb.GetNetworkIDResponse\x12\x35\n\x07\x41\x64\x64Node\x12\x15.rpcpb.AddNodeRequest\x1a\x13.rpcpb.BaseResponse\x12M\n\x0eGetBlockHeight\x12\x1c.rpcpb.GetBlockHeightRequest\x1a\x1d.rpcpb.GetBlockHeightResponse\x12G\n\x0cGetBlockHash\x12\x1a.rpcpb.GetBlockHashRequest\x1a\x1b.rpcpb.GetBlockHashResponse\x12G\n\x0eGetBlockHeader\x12\x16.rpcpb.GetBlockRequest\x1a\x1d.rpcpb.GetBlockHeaderResponse\x12;\n\x08GetBlock\x12\x16.rpcpb.GetBlockRequest\x1a\x17.rpcpb.GetBlockResponse\x12\x44\n\x0bGetNodeInfo\x12\x19.rpcpb.GetNodeInfoRequest\x1a\x1a.rpcpb.GetNodeInfoResponseb\x06proto3')
+  serialized_pb=_b('\n\rcontrol.proto\x12\x05rpcpb\x1a\x0b\x62lock.proto\x1a\x0c\x63ommon.proto\"\"\n\x11\x44\x65\x62ugLevelRequest\x12\r\n\x05level\x18\x01 \x01(\t\"$\n\x16UpdateNetworkIDRequest\x12\n\n\x02id\x18\x01 \x01(\r\"\x15\n\x13GetNetworkIDRequest\"3\n\x14GetNetworkIDResponse\x12\n\n\x02id\x18\x01 \x01(\r\x12\x0f\n\x07literal\x18\x02 \x01(\t\"\x1e\n\x0e\x41\x64\x64NodeRequest\x12\x0c\n\x04node\x18\x01 \x01(\t\"\x17\n\x15GetBlockHeightRequest\"G\n\x16GetBlockHeightResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0e\n\x06height\x18\x03 \x01(\r\"%\n\x13GetBlockHashRequest\x12\x0e\n\x06height\x18\x01 \x01(\r\"C\n\x14GetBlockHashResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0c\n\x04hash\x18\x03 \x01(\t\"%\n\x0fGetBlockRequest\x12\x12\n\nblock_hash\x18\x01 \x01(\t\"\\\n\x16GetBlockHeaderResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12#\n\x06header\x18\x03 \x01(\x0b\x32\x13.corepb.BlockHeader\"O\n\x10GetBlockResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1c\n\x05\x62lock\x18\x03 \x01(\x0b\x32\r.corepb.Block\".\n\x04Node\x12\n\n\x02id\x18\x01 \x01(\t\x12\r\n\x05\x61\x64\x64rs\x18\x02 \x03(\t\x12\x0b\n\x03ttl\x18\x03 \x01(\t\"\x14\n\x12GetNodeInfoRequest\"1\n\x13GetNodeInfoResponse\x12\x1a\n\x05nodes\x18\x01 \x03(\x0b\x32\x0b.rpcpb.Node\"%\n\x13GetBlockByHeightReq\x12\x0e\n\x06height\x18\x01 \x01(\r\"7\n!GetBlockTransactionCountByHashReq\x12\x12\n\nblock_hash\x18\x01 \x01(\t\"5\n#GetBlockTransactionCountByHeightReq\x12\x0e\n\x06height\x18\x01 \x01(\r\"C\n\x13GetBlockTxCountResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\r\n\x05\x63ount\x18\x03 \x01(\r\"I\n$GetTransactionByBlockHashAndIndexReq\x12\x12\n\nblock_hash\x18\x01 \x01(\t\x12\r\n\x05index\x18\x02 \x01(\x05\"G\n&GetTransactionByBlockHeightAndIndexReq\x12\x0e\n\x06height\x18\x01 \x01(\r\x12\r\n\x05index\x18\x02 \x01(\x05\"K\n\tGetTxResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1f\n\x02Tx\x18\x03 \x01(\x0b\x32\x13.corepb.Transaction2\xe4\x08\n\x0e\x43ontorlCommand\x12>\n\rSetDebugLevel\x12\x18.rpcpb.DebugLevelRequest\x1a\x13.rpcpb.BaseResponse\x12\x45\n\x0fUpdateNetworkID\x12\x1d.rpcpb.UpdateNetworkIDRequest\x1a\x13.rpcpb.BaseResponse\x12G\n\x0cGetNetworkID\x12\x1a.rpcpb.GetNetworkIDRequest\x1a\x1b.rpcpb.GetNetworkIDResponse\x12\x35\n\x07\x41\x64\x64Node\x12\x15.rpcpb.AddNodeRequest\x1a\x13.rpcpb.BaseResponse\x12M\n\x0eGetBlockHeight\x12\x1c.rpcpb.GetBlockHeightRequest\x1a\x1d.rpcpb.GetBlockHeightResponse\x12G\n\x0cGetBlockHash\x12\x1a.rpcpb.GetBlockHashRequest\x1a\x1b.rpcpb.GetBlockHashResponse\x12G\n\x0eGetBlockHeader\x12\x16.rpcpb.GetBlockRequest\x1a\x1d.rpcpb.GetBlockHeaderResponse\x12;\n\x08GetBlock\x12\x16.rpcpb.GetBlockRequest\x1a\x17.rpcpb.GetBlockResponse\x12\x44\n\x0bGetNodeInfo\x12\x19.rpcpb.GetNodeInfoRequest\x1a\x1a.rpcpb.GetNodeInfoResponse\x12G\n\x10GetBlockByHeight\x12\x1a.rpcpb.GetBlockByHeightReq\x1a\x17.rpcpb.GetBlockResponse\x12\x66\n\x1eGetBlockTransactionCountByHash\x12(.rpcpb.GetBlockTransactionCountByHashReq\x1a\x1a.rpcpb.GetBlockTxCountResp\x12j\n GetBlockTransactionCountByHeight\x12*.rpcpb.GetBlockTransactionCountByHeightReq\x1a\x1a.rpcpb.GetBlockTxCountResp\x12\x62\n!GetTransactionByBlockHashAndIndex\x12+.rpcpb.GetTransactionByBlockHashAndIndexReq\x1a\x10.rpcpb.GetTxResp\x12\x66\n#GetTransactionByBlockHeightAndIndex\x12-.rpcpb.GetTransactionByBlockHeightAndIndexReq\x1a\x10.rpcpb.GetTxRespb\x06proto3')
   ,
   dependencies=[block__pb2.DESCRIPTOR,common__pb2.DESCRIPTOR,])
 
@@ -548,9 +548,269 @@ _GETNODEINFORESPONSE = _descriptor.Descriptor(
   serialized_end=772,
 )
 
+
+_GETBLOCKBYHEIGHTREQ = _descriptor.Descriptor(
+  name='GetBlockByHeightReq',
+  full_name='rpcpb.GetBlockByHeightReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='height', full_name='rpcpb.GetBlockByHeightReq.height', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=774,
+  serialized_end=811,
+)
+
+
+_GETBLOCKTRANSACTIONCOUNTBYHASHREQ = _descriptor.Descriptor(
+  name='GetBlockTransactionCountByHashReq',
+  full_name='rpcpb.GetBlockTransactionCountByHashReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='block_hash', full_name='rpcpb.GetBlockTransactionCountByHashReq.block_hash', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=813,
+  serialized_end=868,
+)
+
+
+_GETBLOCKTRANSACTIONCOUNTBYHEIGHTREQ = _descriptor.Descriptor(
+  name='GetBlockTransactionCountByHeightReq',
+  full_name='rpcpb.GetBlockTransactionCountByHeightReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='height', full_name='rpcpb.GetBlockTransactionCountByHeightReq.height', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=870,
+  serialized_end=923,
+)
+
+
+_GETBLOCKTXCOUNTRESP = _descriptor.Descriptor(
+  name='GetBlockTxCountResp',
+  full_name='rpcpb.GetBlockTxCountResp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='code', full_name='rpcpb.GetBlockTxCountResp.code', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='rpcpb.GetBlockTxCountResp.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='count', full_name='rpcpb.GetBlockTxCountResp.count', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=925,
+  serialized_end=992,
+)
+
+
+_GETTRANSACTIONBYBLOCKHASHANDINDEXREQ = _descriptor.Descriptor(
+  name='GetTransactionByBlockHashAndIndexReq',
+  full_name='rpcpb.GetTransactionByBlockHashAndIndexReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='block_hash', full_name='rpcpb.GetTransactionByBlockHashAndIndexReq.block_hash', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='index', full_name='rpcpb.GetTransactionByBlockHashAndIndexReq.index', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=994,
+  serialized_end=1067,
+)
+
+
+_GETTRANSACTIONBYBLOCKHEIGHTANDINDEXREQ = _descriptor.Descriptor(
+  name='GetTransactionByBlockHeightAndIndexReq',
+  full_name='rpcpb.GetTransactionByBlockHeightAndIndexReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='height', full_name='rpcpb.GetTransactionByBlockHeightAndIndexReq.height', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='index', full_name='rpcpb.GetTransactionByBlockHeightAndIndexReq.index', index=1,
+      number=2, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1069,
+  serialized_end=1140,
+)
+
+
+_GETTXRESP = _descriptor.Descriptor(
+  name='GetTxResp',
+  full_name='rpcpb.GetTxResp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='code', full_name='rpcpb.GetTxResp.code', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='rpcpb.GetTxResp.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='Tx', full_name='rpcpb.GetTxResp.Tx', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1142,
+  serialized_end=1217,
+)
+
 _GETBLOCKHEADERRESPONSE.fields_by_name['header'].message_type = block__pb2._BLOCKHEADER
 _GETBLOCKRESPONSE.fields_by_name['block'].message_type = block__pb2._BLOCK
 _GETNODEINFORESPONSE.fields_by_name['nodes'].message_type = _NODE
+_GETTXRESP.fields_by_name['Tx'].message_type = block__pb2._TRANSACTION
 DESCRIPTOR.message_types_by_name['DebugLevelRequest'] = _DEBUGLEVELREQUEST
 DESCRIPTOR.message_types_by_name['UpdateNetworkIDRequest'] = _UPDATENETWORKIDREQUEST
 DESCRIPTOR.message_types_by_name['GetNetworkIDRequest'] = _GETNETWORKIDREQUEST
@@ -566,6 +826,13 @@ DESCRIPTOR.message_types_by_name['GetBlockResponse'] = _GETBLOCKRESPONSE
 DESCRIPTOR.message_types_by_name['Node'] = _NODE
 DESCRIPTOR.message_types_by_name['GetNodeInfoRequest'] = _GETNODEINFOREQUEST
 DESCRIPTOR.message_types_by_name['GetNodeInfoResponse'] = _GETNODEINFORESPONSE
+DESCRIPTOR.message_types_by_name['GetBlockByHeightReq'] = _GETBLOCKBYHEIGHTREQ
+DESCRIPTOR.message_types_by_name['GetBlockTransactionCountByHashReq'] = _GETBLOCKTRANSACTIONCOUNTBYHASHREQ
+DESCRIPTOR.message_types_by_name['GetBlockTransactionCountByHeightReq'] = _GETBLOCKTRANSACTIONCOUNTBYHEIGHTREQ
+DESCRIPTOR.message_types_by_name['GetBlockTxCountResp'] = _GETBLOCKTXCOUNTRESP
+DESCRIPTOR.message_types_by_name['GetTransactionByBlockHashAndIndexReq'] = _GETTRANSACTIONBYBLOCKHASHANDINDEXREQ
+DESCRIPTOR.message_types_by_name['GetTransactionByBlockHeightAndIndexReq'] = _GETTRANSACTIONBYBLOCKHEIGHTANDINDEXREQ
+DESCRIPTOR.message_types_by_name['GetTxResp'] = _GETTXRESP
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 DebugLevelRequest = _reflection.GeneratedProtocolMessageType('DebugLevelRequest', (_message.Message,), dict(
@@ -673,6 +940,55 @@ GetNodeInfoResponse = _reflection.GeneratedProtocolMessageType('GetNodeInfoRespo
   ))
 _sym_db.RegisterMessage(GetNodeInfoResponse)
 
+GetBlockByHeightReq = _reflection.GeneratedProtocolMessageType('GetBlockByHeightReq', (_message.Message,), dict(
+  DESCRIPTOR = _GETBLOCKBYHEIGHTREQ,
+  __module__ = 'control_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.GetBlockByHeightReq)
+  ))
+_sym_db.RegisterMessage(GetBlockByHeightReq)
+
+GetBlockTransactionCountByHashReq = _reflection.GeneratedProtocolMessageType('GetBlockTransactionCountByHashReq', (_message.Message,), dict(
+  DESCRIPTOR = _GETBLOCKTRANSACTIONCOUNTBYHASHREQ,
+  __module__ = 'control_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.GetBlockTransactionCountByHashReq)
+  ))
+_sym_db.RegisterMessage(GetBlockTransactionCountByHashReq)
+
+GetBlockTransactionCountByHeightReq = _reflection.GeneratedProtocolMessageType('GetBlockTransactionCountByHeightReq', (_message.Message,), dict(
+  DESCRIPTOR = _GETBLOCKTRANSACTIONCOUNTBYHEIGHTREQ,
+  __module__ = 'control_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.GetBlockTransactionCountByHeightReq)
+  ))
+_sym_db.RegisterMessage(GetBlockTransactionCountByHeightReq)
+
+GetBlockTxCountResp = _reflection.GeneratedProtocolMessageType('GetBlockTxCountResp', (_message.Message,), dict(
+  DESCRIPTOR = _GETBLOCKTXCOUNTRESP,
+  __module__ = 'control_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.GetBlockTxCountResp)
+  ))
+_sym_db.RegisterMessage(GetBlockTxCountResp)
+
+GetTransactionByBlockHashAndIndexReq = _reflection.GeneratedProtocolMessageType('GetTransactionByBlockHashAndIndexReq', (_message.Message,), dict(
+  DESCRIPTOR = _GETTRANSACTIONBYBLOCKHASHANDINDEXREQ,
+  __module__ = 'control_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.GetTransactionByBlockHashAndIndexReq)
+  ))
+_sym_db.RegisterMessage(GetTransactionByBlockHashAndIndexReq)
+
+GetTransactionByBlockHeightAndIndexReq = _reflection.GeneratedProtocolMessageType('GetTransactionByBlockHeightAndIndexReq', (_message.Message,), dict(
+  DESCRIPTOR = _GETTRANSACTIONBYBLOCKHEIGHTANDINDEXREQ,
+  __module__ = 'control_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.GetTransactionByBlockHeightAndIndexReq)
+  ))
+_sym_db.RegisterMessage(GetTransactionByBlockHeightAndIndexReq)
+
+GetTxResp = _reflection.GeneratedProtocolMessageType('GetTxResp', (_message.Message,), dict(
+  DESCRIPTOR = _GETTXRESP,
+  __module__ = 'control_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.GetTxResp)
+  ))
+_sym_db.RegisterMessage(GetTxResp)
+
 
 
 _CONTORLCOMMAND = _descriptor.ServiceDescriptor(
@@ -681,8 +997,8 @@ _CONTORLCOMMAND = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=775,
-  serialized_end=1410,
+  serialized_start=1220,
+  serialized_end=2344,
   methods=[
   _descriptor.MethodDescriptor(
     name='SetDebugLevel',
@@ -763,6 +1079,51 @@ _CONTORLCOMMAND = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_GETNODEINFOREQUEST,
     output_type=_GETNODEINFORESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetBlockByHeight',
+    full_name='rpcpb.ContorlCommand.GetBlockByHeight',
+    index=9,
+    containing_service=None,
+    input_type=_GETBLOCKBYHEIGHTREQ,
+    output_type=_GETBLOCKRESPONSE,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetBlockTransactionCountByHash',
+    full_name='rpcpb.ContorlCommand.GetBlockTransactionCountByHash',
+    index=10,
+    containing_service=None,
+    input_type=_GETBLOCKTRANSACTIONCOUNTBYHASHREQ,
+    output_type=_GETBLOCKTXCOUNTRESP,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetBlockTransactionCountByHeight',
+    full_name='rpcpb.ContorlCommand.GetBlockTransactionCountByHeight',
+    index=11,
+    containing_service=None,
+    input_type=_GETBLOCKTRANSACTIONCOUNTBYHEIGHTREQ,
+    output_type=_GETBLOCKTXCOUNTRESP,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetTransactionByBlockHashAndIndex',
+    full_name='rpcpb.ContorlCommand.GetTransactionByBlockHashAndIndex',
+    index=12,
+    containing_service=None,
+    input_type=_GETTRANSACTIONBYBLOCKHASHANDINDEXREQ,
+    output_type=_GETTXRESP,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetTransactionByBlockHeightAndIndex',
+    full_name='rpcpb.ContorlCommand.GetTransactionByBlockHeightAndIndex',
+    index=13,
+    containing_service=None,
+    input_type=_GETTRANSACTIONBYBLOCKHEIGHTANDINDEXREQ,
+    output_type=_GETTXRESP,
     serialized_options=None,
   ),
 ])

@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='rpcpb',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\tweb.proto\x12\x05rpcpb\x1a\x11transaction.proto\"5\n\x0fViewTxDetailReq\x12\x0c\n\x04hash\x18\x01 \x01(\t\x12\x14\n\x0cspread_split\x18\x02 \x01(\x08\"\xae\x01\n\x10ViewTxDetailResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0f\n\x07version\x18\x03 \x01(\x05\x12\x12\n\nblock_time\x18\x04 \x01(\x03\x12\x14\n\x0c\x62lock_height\x18\x05 \x01(\r\x12\x1f\n\x06status\x18\x06 \x01(\x0e\x32\x0f.rpcpb.TxStatus\x12\x1f\n\x06\x64\x65tail\x18\x07 \x01(\x0b\x32\x0f.rpcpb.TxDetail\"\"\n\x12ViewBlockDetailReq\x12\x0c\n\x04hash\x18\x01 \x01(\t\"X\n\x13ViewBlockDetailResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\"\n\x06\x64\x65tail\x18\x03 \x01(\x0b\x32\x12.rpcpb.BlockDetail\"\x80\x01\n\x0c\x43ontractInfo\x12\x0b\n\x03\x66\x65\x65\x18\x01 \x01(\r\x12\x0e\n\x06\x66\x61iled\x18\x02 \x01(\x08\x12\x11\n\tgas_limit\x18\x03 \x01(\x04\x12\x10\n\x08gas_used\x18\x04 \x01(\x04\x12\x11\n\tgas_price\x18\x05 \x01(\x04\x12\r\n\x05nonce\x18\x06 \x01(\x04\x12\x0c\n\x04\x64\x61ta\x18\x07 \x01(\t\"\x11\n\x0fListenBlocksReq\"Z\n\x08TxDetail\x12\x0c\n\x04hash\x18\x01 \x01(\t\x12\x1e\n\x03vin\x18\x02 \x03(\x0b\x32\x11.rpcpb.TxInDetail\x12 \n\x04vout\x18\x03 \x03(\x0b\x32\x12.rpcpb.TxOutDetail\"w\n\nTxInDetail\x12+\n\x0fprev_out_detail\x18\x01 \x01(\x0b\x32\x12.rpcpb.TxOutDetail\x12\x12\n\nscript_sig\x18\x02 \x01(\t\x12\x10\n\x08sequence\x18\x03 \x01(\r\x12\x16\n\x0eprev_out_point\x18\x04 \x01(\t\"\xad\x04\n\x0bTxOutDetail\x12\x0c\n\x04\x61\x64\x64r\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x04\x12\x16\n\x0escript_pub_key\x18\x03 \x01(\t\x12\x15\n\rscript_disasm\x18\x04 \x01(\t\x12*\n\x04type\x18\x05 \x01(\x0e\x32\x1c.rpcpb.TxOutDetail.TxOutType\x12\x31\n\x10token_issue_info\x18\x06 \x01(\x0b\x32\x15.rpcpb.TokenIssueInfoH\x00\x12\x37\n\x13token_transfer_info\x18\x07 \x01(\x0b\x32\x18.rpcpb.TokenTransferInfoH\x00\x12\x37\n\x13split_contract_info\x18\x08 \x01(\x0b\x32\x18.rpcpb.SplitContractInfoH\x00\x12,\n\rcontract_info\x18\t \x01(\x0b\x32\x13.rpcpb.ContractInfoH\x00\"\xc6\x01\n\tTxOutType\x12\x0b\n\x07unknown\x10\x00\x12\x16\n\x12pay_to_pubkey_hash\x10\x01\x12\x1b\n\x17pay_to_pubkey_hash_cltv\x10\x02\x12\x0f\n\x0btoken_issue\x10\x03\x12\x12\n\x0etoken_transfer\x10\x04\x12\x12\n\x0enew_split_addr\x10\x05\x12\x16\n\x12pay_to_script_hash\x10\x06\x12\x13\n\x0f\x63ontract_create\x10\x07\x12\x11\n\rcontract_call\x10\x08\x42\n\n\x08\x61ppendix\"\xce\x01\n\x0b\x42lockDetail\x12\x0f\n\x07version\x18\x01 \x01(\x05\x12\x0e\n\x06height\x18\x02 \x01(\r\x12\x12\n\ntime_stamp\x18\x03 \x01(\x03\x12\x0c\n\x04size\x18\x04 \x01(\r\x12\x0c\n\x04hash\x18\x05 \x01(\t\x12\x17\n\x0fprev_block_hash\x18\x06 \x01(\t\x12\x11\n\tcoin_base\x18\x07 \x01(\t\x12\x11\n\tconfirmed\x18\x08 \x01(\x08\x12\x11\n\tsignature\x18\t \x01(\t\x12\x1c\n\x03txs\x18\n \x03(\x0b\x32\x0f.rpcpb.TxDetail\"4\n\x0eTokenIssueInfo\x12\"\n\ttoken_tag\x18\x01 \x01(\x0b\x32\x0f.rpcpb.TokenTag\"3\n\x11SplitContractInfo\x12\r\n\x05\x61\x64\x64rs\x18\x01 \x03(\t\x12\x0f\n\x07weights\x18\x02 \x03(\x04\"%\n\x11TokenTransferInfo\x12\x10\n\x08token_id\x18\x01 \x01(\t\"R\n\x07\x43\x61llReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\n\n\x02to\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\x12\x0e\n\x06height\x18\x04 \x01(\r\x12\x0f\n\x07timeout\x18\x05 \x01(\r\"9\n\x08\x43\x61llResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0e\n\x06output\x18\x03 \x01(\t\"\x18\n\x08NonceReq\x12\x0c\n\x04\x61\x64\x64r\x18\x01 \x01(\t\"9\n\tNonceResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\r\n\x05nonce\x18\x03 \x01(\x04*@\n\x08TxStatus\x12\x0b\n\x07unknown\x10\x00\x12\x0b\n\x07pending\x10\x01\x12\x0b\n\x07onchain\x10\x02\x12\r\n\tconfirmed\x10\x03\x32\xb1\x02\n\x06WebApi\x12?\n\x0cViewTxDetail\x12\x16.rpcpb.ViewTxDetailReq\x1a\x17.rpcpb.ViewTxDetailResp\x12H\n\x0fViewBlockDetail\x12\x19.rpcpb.ViewBlockDetailReq\x1a\x1a.rpcpb.ViewBlockDetailResp\x12\x45\n\x15ListenAndReadNewBlock\x12\x16.rpcpb.ListenBlocksReq\x1a\x12.rpcpb.BlockDetail0\x01\x12)\n\x06\x44oCall\x12\x0e.rpcpb.CallReq\x1a\x0f.rpcpb.CallResp\x12*\n\x05Nonce\x12\x0f.rpcpb.NonceReq\x1a\x10.rpcpb.NonceRespb\x06proto3')
+  serialized_pb=_b('\n\tweb.proto\x12\x05rpcpb\x1a\x11transaction.proto\"W\n\x0bRegisterReq\x12\x0c\n\x04type\x18\x01 \x01(\r\x12\x0e\n\x06\x63\x61ncel\x18\x02 \x01(\x08\x12\"\n\x08logs_req\x18\x03 \x01(\x0b\x32\x0e.rpcpb.LogsReqH\x00\x42\x06\n\x04info\"\x94\x01\n\x0cListenedData\x12\x0c\n\x04type\x18\x01 \x01(\r\x12#\n\x05\x62lock\x18\x02 \x01(\x0b\x32\x12.rpcpb.BlockDetailH\x00\x12!\n\x04logs\x18\x03 \x01(\x0b\x32\x11.rpcpb.LogDetailsH\x00\x12&\n\x04info\x18\x04 \x01(\x0b\x32\x16.rpcpb.RegisterDetailsH\x00\x42\x06\n\x04\x64\x61ta\"\x1e\n\x0fRegisterDetails\x12\x0b\n\x03uid\x18\x01 \x01(\t\"5\n\x0fViewTxDetailReq\x12\x0c\n\x04hash\x18\x01 \x01(\t\x12\x14\n\x0cspread_split\x18\x02 \x01(\x08\"\xae\x01\n\x10ViewTxDetailResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0f\n\x07version\x18\x03 \x01(\x05\x12\x12\n\nblock_time\x18\x04 \x01(\x03\x12\x14\n\x0c\x62lock_height\x18\x05 \x01(\r\x12\x1f\n\x06status\x18\x06 \x01(\x0e\x32\x0f.rpcpb.TxStatus\x12\x1f\n\x06\x64\x65tail\x18\x07 \x01(\x0b\x32\x0f.rpcpb.TxDetail\"\"\n\x12ViewBlockDetailReq\x12\x0c\n\x04hash\x18\x01 \x01(\t\"X\n\x13ViewBlockDetailResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\"\n\x06\x64\x65tail\x18\x03 \x01(\x0b\x32\x12.rpcpb.BlockDetail\"\xa0\x01\n\x0c\x43ontractInfo\x12\x0b\n\x03\x66\x65\x65\x18\x01 \x01(\r\x12\x0e\n\x06\x66\x61iled\x18\x02 \x01(\x08\x12\x11\n\tgas_limit\x18\x03 \x01(\x04\x12\x10\n\x08gas_used\x18\x04 \x01(\x04\x12\x11\n\tgas_price\x18\x05 \x01(\x04\x12\r\n\x05nonce\x18\x06 \x01(\x04\x12\x0c\n\x04\x64\x61ta\x18\x07 \x01(\t\x12\x1e\n\x04logs\x18\x08 \x03(\x0b\x32\x10.rpcpb.LogDetail\"\x11\n\x0fListenBlocksReq\"\x98\x01\n\x07LogsReq\x12\x0b\n\x03uid\x18\x01 \x01(\t\x12\x0c\n\x04hash\x18\x02 \x01(\t\x12\x0c\n\x04\x66rom\x18\x03 \x01(\r\x12\n\n\x02to\x18\x04 \x01(\r\x12\x11\n\taddresses\x18\x05 \x03(\t\x12(\n\x06topics\x18\x06 \x03(\x0b\x32\x18.rpcpb.LogsReq.topiclist\x1a\x1b\n\ttopiclist\x12\x0e\n\x06topics\x18\x01 \x03(\t\"E\n\x04Logs\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1e\n\x04logs\x18\x03 \x03(\x0b\x32\x10.rpcpb.LogDetail\",\n\nLogDetails\x12\x1e\n\x04logs\x18\x01 \x03(\x0b\x32\x10.rpcpb.LogDetail\"\xa7\x01\n\tLogDetail\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x01(\t\x12\x0e\n\x06topics\x18\x02 \x03(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\x12\x14\n\x0c\x62lock_number\x18\x04 \x01(\x04\x12\x0f\n\x07tx_hash\x18\x05 \x01(\t\x12\x10\n\x08tx_index\x18\x06 \x01(\r\x12\x12\n\nblock_hash\x18\x07 \x01(\t\x12\r\n\x05index\x18\x08 \x01(\r\x12\x0f\n\x07removed\x18\t \x01(\x08\"Z\n\x08TxDetail\x12\x0c\n\x04hash\x18\x01 \x01(\t\x12\x1e\n\x03vin\x18\x02 \x03(\x0b\x32\x11.rpcpb.TxInDetail\x12 \n\x04vout\x18\x03 \x03(\x0b\x32\x12.rpcpb.TxOutDetail\"w\n\nTxInDetail\x12+\n\x0fprev_out_detail\x18\x01 \x01(\x0b\x32\x12.rpcpb.TxOutDetail\x12\x12\n\nscript_sig\x18\x02 \x01(\t\x12\x10\n\x08sequence\x18\x03 \x01(\r\x12\x16\n\x0eprev_out_point\x18\x04 \x01(\t\"\xad\x04\n\x0bTxOutDetail\x12\x0c\n\x04\x61\x64\x64r\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x04\x12\x16\n\x0escript_pub_key\x18\x03 \x01(\t\x12\x15\n\rscript_disasm\x18\x04 \x01(\t\x12*\n\x04type\x18\x05 \x01(\x0e\x32\x1c.rpcpb.TxOutDetail.TxOutType\x12\x31\n\x10token_issue_info\x18\x06 \x01(\x0b\x32\x15.rpcpb.TokenIssueInfoH\x00\x12\x37\n\x13token_transfer_info\x18\x07 \x01(\x0b\x32\x18.rpcpb.TokenTransferInfoH\x00\x12\x37\n\x13split_contract_info\x18\x08 \x01(\x0b\x32\x18.rpcpb.SplitContractInfoH\x00\x12,\n\rcontract_info\x18\t \x01(\x0b\x32\x13.rpcpb.ContractInfoH\x00\"\xc6\x01\n\tTxOutType\x12\x0b\n\x07unknown\x10\x00\x12\x16\n\x12pay_to_pubkey_hash\x10\x01\x12\x1b\n\x17pay_to_pubkey_hash_cltv\x10\x02\x12\x0f\n\x0btoken_issue\x10\x03\x12\x12\n\x0etoken_transfer\x10\x04\x12\x12\n\x0enew_split_addr\x10\x05\x12\x16\n\x12pay_to_script_hash\x10\x06\x12\x13\n\x0f\x63ontract_create\x10\x07\x12\x11\n\rcontract_call\x10\x08\x42\n\n\x08\x61ppendix\"\xf5\x01\n\x0b\x42lockDetail\x12\x0f\n\x07version\x18\x01 \x01(\x05\x12\x0e\n\x06height\x18\x02 \x01(\r\x12\x12\n\ntime_stamp\x18\x03 \x01(\x03\x12\x0c\n\x04size\x18\x04 \x01(\r\x12\x0c\n\x04hash\x18\x05 \x01(\t\x12\x17\n\x0fprev_block_hash\x18\x06 \x01(\t\x12\x11\n\tcoin_base\x18\x07 \x01(\t\x12\x11\n\tconfirmed\x18\x08 \x01(\x08\x12\x11\n\tsignature\x18\t \x01(\t\x12\x1c\n\x03txs\x18\n \x03(\x0b\x32\x0f.rpcpb.TxDetail\x12%\n\x0cinternal_txs\x18\x0b \x03(\x0b\x32\x0f.rpcpb.TxDetail\"4\n\x0eTokenIssueInfo\x12\"\n\ttoken_tag\x18\x01 \x01(\x0b\x32\x0f.rpcpb.TokenTag\"3\n\x11SplitContractInfo\x12\r\n\x05\x61\x64\x64rs\x18\x01 \x03(\t\x12\x0f\n\x07weights\x18\x02 \x03(\r\"%\n\x11TokenTransferInfo\x12\x10\n\x08token_id\x18\x01 \x01(\t\"R\n\x07\x43\x61llReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\n\n\x02to\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\x12\x0e\n\x06height\x18\x04 \x01(\r\x12\x0f\n\x07timeout\x18\x05 \x01(\r\"9\n\x08\x43\x61llResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0e\n\x06output\x18\x03 \x01(\t\"=\n\x0f\x45stimateGasResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0b\n\x03gas\x18\x03 \x01(\x05\"\x18\n\x08NonceReq\x12\x0c\n\x04\x61\x64\x64r\x18\x01 \x01(\t\"9\n\tNonceResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\r\n\x05nonce\x18\x03 \x01(\x04\"\n\n\x08TableReq\"9\n\tTableResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\r\n\x05table\x18\x03 \x03(\t\"\x0b\n\tPeerIDReq\";\n\nPeerIDResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0e\n\x06peerid\x18\x03 \x01(\t\"\x0b\n\tMinersReq\"O\n\nMinersResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\"\n\x06miners\x18\x03 \x03(\x0b\x32\x12.rpcpb.MinerDetail\":\n\x0bMinerDetail\x12\n\n\x02id\x18\x01 \x01(\t\x12\x0f\n\x07\x61\x64\x64ress\x18\x02 \x01(\t\x12\x0e\n\x06iplist\x18\x03 \x03(\t\"\x1d\n\nGetCodeReq\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x01(\t\":\n\x0bGetCodeResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t\"\r\n\x0bGasPriceReq\"<\n\x0cGasPriceResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\r\n\x05price\x18\x03 \x01(\x05\"?\n\nStorageReq\x12\x0f\n\x07\x61\x64\x64ress\x18\x01 \x01(\t\x12\x10\n\x08position\x18\x02 \x01(\t\x12\x0e\n\x06height\x18\x03 \x01(\x05\":\n\x0bStorageResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0c\n\x04\x64\x61ta\x18\x03 \x01(\t*@\n\x08TxStatus\x12\x0b\n\x07unknown\x10\x00\x12\x0b\n\x07pending\x10\x01\x12\x0b\n\x07onchain\x10\x02\x12\r\n\tconfirmed\x10\x03\x32\xa9\x05\n\x06WebApi\x12?\n\x0cViewTxDetail\x12\x16.rpcpb.ViewTxDetailReq\x1a\x17.rpcpb.ViewTxDetailResp\x12H\n\x0fViewBlockDetail\x12\x19.rpcpb.ViewBlockDetailReq\x1a\x1a.rpcpb.ViewBlockDetailResp\x12)\n\x06\x44oCall\x12\x0e.rpcpb.CallReq\x1a\x0f.rpcpb.CallResp\x12\x30\n\x07GetCode\x12\x11.rpcpb.GetCodeReq\x1a\x12.rpcpb.GetCodeResp\x12\x33\n\x08GasPrice\x12\x12.rpcpb.GasPriceReq\x1a\x13.rpcpb.GasPriceResp\x12\x35\n\x0b\x45stimateGas\x12\x0e.rpcpb.CallReq\x1a\x16.rpcpb.EstimateGasResp\x12\x35\n\x0cGetStorageAt\x12\x11.rpcpb.StorageReq\x1a\x12.rpcpb.StorageResp\x12*\n\x05Nonce\x12\x0f.rpcpb.NonceReq\x1a\x10.rpcpb.NonceResp\x12&\n\x07GetLogs\x12\x0e.rpcpb.LogsReq\x1a\x0b.rpcpb.Logs\x12\x36\n\x07\x43onnect\x12\x12.rpcpb.RegisterReq\x1a\x13.rpcpb.ListenedData(\x01\x30\x01\x12*\n\x05Table\x12\x0f.rpcpb.TableReq\x1a\x10.rpcpb.TableResp\x12-\n\x06PeerID\x12\x10.rpcpb.PeerIDReq\x1a\x11.rpcpb.PeerIDResp\x12-\n\x06Miners\x12\x10.rpcpb.MinersReq\x1a\x11.rpcpb.MinersRespb\x06proto3')
   ,
   dependencies=[transaction__pb2.DESCRIPTOR,])
 
@@ -50,8 +50,8 @@ _TXSTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1903,
-  serialized_end=1967,
+  serialized_start=3343,
+  serialized_end=3407,
 )
 _sym_db.RegisterEnumDescriptor(_TXSTATUS)
 
@@ -107,10 +107,144 @@ _TXOUTDETAIL_TXOUTTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   serialized_options=None,
-  serialized_start=1108,
-  serialized_end=1306,
+  serialized_start=1854,
+  serialized_end=2052,
 )
 _sym_db.RegisterEnumDescriptor(_TXOUTDETAIL_TXOUTTYPE)
+
+
+_REGISTERREQ = _descriptor.Descriptor(
+  name='RegisterReq',
+  full_name='rpcpb.RegisterReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='type', full_name='rpcpb.RegisterReq.type', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='cancel', full_name='rpcpb.RegisterReq.cancel', index=1,
+      number=2, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='logs_req', full_name='rpcpb.RegisterReq.logs_req', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='info', full_name='rpcpb.RegisterReq.info',
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=39,
+  serialized_end=126,
+)
+
+
+_LISTENEDDATA = _descriptor.Descriptor(
+  name='ListenedData',
+  full_name='rpcpb.ListenedData',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='type', full_name='rpcpb.ListenedData.type', index=0,
+      number=1, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='block', full_name='rpcpb.ListenedData.block', index=1,
+      number=2, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='logs', full_name='rpcpb.ListenedData.logs', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='info', full_name='rpcpb.ListenedData.info', index=3,
+      number=4, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+    _descriptor.OneofDescriptor(
+      name='data', full_name='rpcpb.ListenedData.data',
+      index=0, containing_type=None, fields=[]),
+  ],
+  serialized_start=129,
+  serialized_end=277,
+)
+
+
+_REGISTERDETAILS = _descriptor.Descriptor(
+  name='RegisterDetails',
+  full_name='rpcpb.RegisterDetails',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='uid', full_name='rpcpb.RegisterDetails.uid', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=279,
+  serialized_end=309,
+)
 
 
 _VIEWTXDETAILREQ = _descriptor.Descriptor(
@@ -146,8 +280,8 @@ _VIEWTXDETAILREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=39,
-  serialized_end=92,
+  serialized_start=311,
+  serialized_end=364,
 )
 
 
@@ -219,8 +353,8 @@ _VIEWTXDETAILRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=95,
-  serialized_end=269,
+  serialized_start=367,
+  serialized_end=541,
 )
 
 
@@ -250,8 +384,8 @@ _VIEWBLOCKDETAILREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=271,
-  serialized_end=305,
+  serialized_start=543,
+  serialized_end=577,
 )
 
 
@@ -295,8 +429,8 @@ _VIEWBLOCKDETAILRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=307,
-  serialized_end=395,
+  serialized_start=579,
+  serialized_end=667,
 )
 
 
@@ -356,6 +490,13 @@ _CONTRACTINFO = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='logs', full_name='rpcpb.ContractInfo.logs', index=7,
+      number=8, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -368,8 +509,8 @@ _CONTRACTINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=398,
-  serialized_end=526,
+  serialized_start=670,
+  serialized_end=830,
 )
 
 
@@ -392,8 +533,267 @@ _LISTENBLOCKSREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=528,
-  serialized_end=545,
+  serialized_start=832,
+  serialized_end=849,
+)
+
+
+_LOGSREQ_TOPICLIST = _descriptor.Descriptor(
+  name='topiclist',
+  full_name='rpcpb.LogsReq.topiclist',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='topics', full_name='rpcpb.LogsReq.topiclist.topics', index=0,
+      number=1, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=977,
+  serialized_end=1004,
+)
+
+_LOGSREQ = _descriptor.Descriptor(
+  name='LogsReq',
+  full_name='rpcpb.LogsReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='uid', full_name='rpcpb.LogsReq.uid', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='hash', full_name='rpcpb.LogsReq.hash', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='from', full_name='rpcpb.LogsReq.from', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='to', full_name='rpcpb.LogsReq.to', index=3,
+      number=4, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='addresses', full_name='rpcpb.LogsReq.addresses', index=4,
+      number=5, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='topics', full_name='rpcpb.LogsReq.topics', index=5,
+      number=6, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[_LOGSREQ_TOPICLIST, ],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=852,
+  serialized_end=1004,
+)
+
+
+_LOGS = _descriptor.Descriptor(
+  name='Logs',
+  full_name='rpcpb.Logs',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='code', full_name='rpcpb.Logs.code', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='rpcpb.Logs.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='logs', full_name='rpcpb.Logs.logs', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1006,
+  serialized_end=1075,
+)
+
+
+_LOGDETAILS = _descriptor.Descriptor(
+  name='LogDetails',
+  full_name='rpcpb.LogDetails',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='logs', full_name='rpcpb.LogDetails.logs', index=0,
+      number=1, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1077,
+  serialized_end=1121,
+)
+
+
+_LOGDETAIL = _descriptor.Descriptor(
+  name='LogDetail',
+  full_name='rpcpb.LogDetail',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='address', full_name='rpcpb.LogDetail.address', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='topics', full_name='rpcpb.LogDetail.topics', index=1,
+      number=2, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='rpcpb.LogDetail.data', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='block_number', full_name='rpcpb.LogDetail.block_number', index=3,
+      number=4, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='tx_hash', full_name='rpcpb.LogDetail.tx_hash', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='tx_index', full_name='rpcpb.LogDetail.tx_index', index=5,
+      number=6, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='block_hash', full_name='rpcpb.LogDetail.block_hash', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='index', full_name='rpcpb.LogDetail.index', index=7,
+      number=8, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='removed', full_name='rpcpb.LogDetail.removed', index=8,
+      number=9, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1124,
+  serialized_end=1291,
 )
 
 
@@ -437,8 +837,8 @@ _TXDETAIL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=547,
-  serialized_end=637,
+  serialized_start=1293,
+  serialized_end=1383,
 )
 
 
@@ -489,8 +889,8 @@ _TXINDETAIL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=639,
-  serialized_end=758,
+  serialized_start=1385,
+  serialized_end=1504,
 )
 
 
@@ -580,8 +980,8 @@ _TXOUTDETAIL = _descriptor.Descriptor(
       name='appendix', full_name='rpcpb.TxOutDetail.appendix',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=761,
-  serialized_end=1318,
+  serialized_start=1507,
+  serialized_end=2064,
 )
 
 
@@ -662,6 +1062,13 @@ _BLOCKDETAIL = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='internal_txs', full_name='rpcpb.BlockDetail.internal_txs', index=10,
+      number=11, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -674,8 +1081,8 @@ _BLOCKDETAIL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1321,
-  serialized_end=1527,
+  serialized_start=2067,
+  serialized_end=2312,
 )
 
 
@@ -705,8 +1112,8 @@ _TOKENISSUEINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1529,
-  serialized_end=1581,
+  serialized_start=2314,
+  serialized_end=2366,
 )
 
 
@@ -726,7 +1133,7 @@ _SPLITCONTRACTINFO = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='weights', full_name='rpcpb.SplitContractInfo.weights', index=1,
-      number=2, type=4, cpp_type=4, label=3,
+      number=2, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -743,8 +1150,8 @@ _SPLITCONTRACTINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1583,
-  serialized_end=1634,
+  serialized_start=2368,
+  serialized_end=2419,
 )
 
 
@@ -774,8 +1181,8 @@ _TOKENTRANSFERINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1636,
-  serialized_end=1673,
+  serialized_start=2421,
+  serialized_end=2458,
 )
 
 
@@ -833,8 +1240,8 @@ _CALLREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1675,
-  serialized_end=1757,
+  serialized_start=2460,
+  serialized_end=2542,
 )
 
 
@@ -878,8 +1285,53 @@ _CALLRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1759,
-  serialized_end=1816,
+  serialized_start=2544,
+  serialized_end=2601,
+)
+
+
+_ESTIMATEGASRESP = _descriptor.Descriptor(
+  name='EstimateGasResp',
+  full_name='rpcpb.EstimateGasResp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='code', full_name='rpcpb.EstimateGasResp.code', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='rpcpb.EstimateGasResp.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='gas', full_name='rpcpb.EstimateGasResp.gas', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2603,
+  serialized_end=2664,
 )
 
 
@@ -909,8 +1361,8 @@ _NONCEREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1818,
-  serialized_end=1842,
+  serialized_start=2666,
+  serialized_end=2690,
 )
 
 
@@ -954,13 +1406,521 @@ _NONCERESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1844,
-  serialized_end=1901,
+  serialized_start=2692,
+  serialized_end=2749,
 )
 
+
+_TABLEREQ = _descriptor.Descriptor(
+  name='TableReq',
+  full_name='rpcpb.TableReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2751,
+  serialized_end=2761,
+)
+
+
+_TABLERESP = _descriptor.Descriptor(
+  name='TableResp',
+  full_name='rpcpb.TableResp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='code', full_name='rpcpb.TableResp.code', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='rpcpb.TableResp.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='table', full_name='rpcpb.TableResp.table', index=2,
+      number=3, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2763,
+  serialized_end=2820,
+)
+
+
+_PEERIDREQ = _descriptor.Descriptor(
+  name='PeerIDReq',
+  full_name='rpcpb.PeerIDReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2822,
+  serialized_end=2833,
+)
+
+
+_PEERIDRESP = _descriptor.Descriptor(
+  name='PeerIDResp',
+  full_name='rpcpb.PeerIDResp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='code', full_name='rpcpb.PeerIDResp.code', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='rpcpb.PeerIDResp.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='peerid', full_name='rpcpb.PeerIDResp.peerid', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2835,
+  serialized_end=2894,
+)
+
+
+_MINERSREQ = _descriptor.Descriptor(
+  name='MinersReq',
+  full_name='rpcpb.MinersReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2896,
+  serialized_end=2907,
+)
+
+
+_MINERSRESP = _descriptor.Descriptor(
+  name='MinersResp',
+  full_name='rpcpb.MinersResp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='code', full_name='rpcpb.MinersResp.code', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='rpcpb.MinersResp.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='miners', full_name='rpcpb.MinersResp.miners', index=2,
+      number=3, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2909,
+  serialized_end=2988,
+)
+
+
+_MINERDETAIL = _descriptor.Descriptor(
+  name='MinerDetail',
+  full_name='rpcpb.MinerDetail',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='id', full_name='rpcpb.MinerDetail.id', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='address', full_name='rpcpb.MinerDetail.address', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='iplist', full_name='rpcpb.MinerDetail.iplist', index=2,
+      number=3, type=9, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2990,
+  serialized_end=3048,
+)
+
+
+_GETCODEREQ = _descriptor.Descriptor(
+  name='GetCodeReq',
+  full_name='rpcpb.GetCodeReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='address', full_name='rpcpb.GetCodeReq.address', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3050,
+  serialized_end=3079,
+)
+
+
+_GETCODERESP = _descriptor.Descriptor(
+  name='GetCodeResp',
+  full_name='rpcpb.GetCodeResp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='code', full_name='rpcpb.GetCodeResp.code', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='rpcpb.GetCodeResp.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='rpcpb.GetCodeResp.data', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3081,
+  serialized_end=3139,
+)
+
+
+_GASPRICEREQ = _descriptor.Descriptor(
+  name='GasPriceReq',
+  full_name='rpcpb.GasPriceReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3141,
+  serialized_end=3154,
+)
+
+
+_GASPRICERESP = _descriptor.Descriptor(
+  name='GasPriceResp',
+  full_name='rpcpb.GasPriceResp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='code', full_name='rpcpb.GasPriceResp.code', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='rpcpb.GasPriceResp.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='price', full_name='rpcpb.GasPriceResp.price', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3156,
+  serialized_end=3216,
+)
+
+
+_STORAGEREQ = _descriptor.Descriptor(
+  name='StorageReq',
+  full_name='rpcpb.StorageReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='address', full_name='rpcpb.StorageReq.address', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='position', full_name='rpcpb.StorageReq.position', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='height', full_name='rpcpb.StorageReq.height', index=2,
+      number=3, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3218,
+  serialized_end=3281,
+)
+
+
+_STORAGERESP = _descriptor.Descriptor(
+  name='StorageResp',
+  full_name='rpcpb.StorageResp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='code', full_name='rpcpb.StorageResp.code', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='rpcpb.StorageResp.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='rpcpb.StorageResp.data', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=3283,
+  serialized_end=3341,
+)
+
+_REGISTERREQ.fields_by_name['logs_req'].message_type = _LOGSREQ
+_REGISTERREQ.oneofs_by_name['info'].fields.append(
+  _REGISTERREQ.fields_by_name['logs_req'])
+_REGISTERREQ.fields_by_name['logs_req'].containing_oneof = _REGISTERREQ.oneofs_by_name['info']
+_LISTENEDDATA.fields_by_name['block'].message_type = _BLOCKDETAIL
+_LISTENEDDATA.fields_by_name['logs'].message_type = _LOGDETAILS
+_LISTENEDDATA.fields_by_name['info'].message_type = _REGISTERDETAILS
+_LISTENEDDATA.oneofs_by_name['data'].fields.append(
+  _LISTENEDDATA.fields_by_name['block'])
+_LISTENEDDATA.fields_by_name['block'].containing_oneof = _LISTENEDDATA.oneofs_by_name['data']
+_LISTENEDDATA.oneofs_by_name['data'].fields.append(
+  _LISTENEDDATA.fields_by_name['logs'])
+_LISTENEDDATA.fields_by_name['logs'].containing_oneof = _LISTENEDDATA.oneofs_by_name['data']
+_LISTENEDDATA.oneofs_by_name['data'].fields.append(
+  _LISTENEDDATA.fields_by_name['info'])
+_LISTENEDDATA.fields_by_name['info'].containing_oneof = _LISTENEDDATA.oneofs_by_name['data']
 _VIEWTXDETAILRESP.fields_by_name['status'].enum_type = _TXSTATUS
 _VIEWTXDETAILRESP.fields_by_name['detail'].message_type = _TXDETAIL
 _VIEWBLOCKDETAILRESP.fields_by_name['detail'].message_type = _BLOCKDETAIL
+_CONTRACTINFO.fields_by_name['logs'].message_type = _LOGDETAIL
+_LOGSREQ_TOPICLIST.containing_type = _LOGSREQ
+_LOGSREQ.fields_by_name['topics'].message_type = _LOGSREQ_TOPICLIST
+_LOGS.fields_by_name['logs'].message_type = _LOGDETAIL
+_LOGDETAILS.fields_by_name['logs'].message_type = _LOGDETAIL
 _TXDETAIL.fields_by_name['vin'].message_type = _TXINDETAIL
 _TXDETAIL.fields_by_name['vout'].message_type = _TXOUTDETAIL
 _TXINDETAIL.fields_by_name['prev_out_detail'].message_type = _TXOUTDETAIL
@@ -983,13 +1943,22 @@ _TXOUTDETAIL.oneofs_by_name['appendix'].fields.append(
   _TXOUTDETAIL.fields_by_name['contract_info'])
 _TXOUTDETAIL.fields_by_name['contract_info'].containing_oneof = _TXOUTDETAIL.oneofs_by_name['appendix']
 _BLOCKDETAIL.fields_by_name['txs'].message_type = _TXDETAIL
+_BLOCKDETAIL.fields_by_name['internal_txs'].message_type = _TXDETAIL
 _TOKENISSUEINFO.fields_by_name['token_tag'].message_type = transaction__pb2._TOKENTAG
+_MINERSRESP.fields_by_name['miners'].message_type = _MINERDETAIL
+DESCRIPTOR.message_types_by_name['RegisterReq'] = _REGISTERREQ
+DESCRIPTOR.message_types_by_name['ListenedData'] = _LISTENEDDATA
+DESCRIPTOR.message_types_by_name['RegisterDetails'] = _REGISTERDETAILS
 DESCRIPTOR.message_types_by_name['ViewTxDetailReq'] = _VIEWTXDETAILREQ
 DESCRIPTOR.message_types_by_name['ViewTxDetailResp'] = _VIEWTXDETAILRESP
 DESCRIPTOR.message_types_by_name['ViewBlockDetailReq'] = _VIEWBLOCKDETAILREQ
 DESCRIPTOR.message_types_by_name['ViewBlockDetailResp'] = _VIEWBLOCKDETAILRESP
 DESCRIPTOR.message_types_by_name['ContractInfo'] = _CONTRACTINFO
 DESCRIPTOR.message_types_by_name['ListenBlocksReq'] = _LISTENBLOCKSREQ
+DESCRIPTOR.message_types_by_name['LogsReq'] = _LOGSREQ
+DESCRIPTOR.message_types_by_name['Logs'] = _LOGS
+DESCRIPTOR.message_types_by_name['LogDetails'] = _LOGDETAILS
+DESCRIPTOR.message_types_by_name['LogDetail'] = _LOGDETAIL
 DESCRIPTOR.message_types_by_name['TxDetail'] = _TXDETAIL
 DESCRIPTOR.message_types_by_name['TxInDetail'] = _TXINDETAIL
 DESCRIPTOR.message_types_by_name['TxOutDetail'] = _TXOUTDETAIL
@@ -999,10 +1968,45 @@ DESCRIPTOR.message_types_by_name['SplitContractInfo'] = _SPLITCONTRACTINFO
 DESCRIPTOR.message_types_by_name['TokenTransferInfo'] = _TOKENTRANSFERINFO
 DESCRIPTOR.message_types_by_name['CallReq'] = _CALLREQ
 DESCRIPTOR.message_types_by_name['CallResp'] = _CALLRESP
+DESCRIPTOR.message_types_by_name['EstimateGasResp'] = _ESTIMATEGASRESP
 DESCRIPTOR.message_types_by_name['NonceReq'] = _NONCEREQ
 DESCRIPTOR.message_types_by_name['NonceResp'] = _NONCERESP
+DESCRIPTOR.message_types_by_name['TableReq'] = _TABLEREQ
+DESCRIPTOR.message_types_by_name['TableResp'] = _TABLERESP
+DESCRIPTOR.message_types_by_name['PeerIDReq'] = _PEERIDREQ
+DESCRIPTOR.message_types_by_name['PeerIDResp'] = _PEERIDRESP
+DESCRIPTOR.message_types_by_name['MinersReq'] = _MINERSREQ
+DESCRIPTOR.message_types_by_name['MinersResp'] = _MINERSRESP
+DESCRIPTOR.message_types_by_name['MinerDetail'] = _MINERDETAIL
+DESCRIPTOR.message_types_by_name['GetCodeReq'] = _GETCODEREQ
+DESCRIPTOR.message_types_by_name['GetCodeResp'] = _GETCODERESP
+DESCRIPTOR.message_types_by_name['GasPriceReq'] = _GASPRICEREQ
+DESCRIPTOR.message_types_by_name['GasPriceResp'] = _GASPRICERESP
+DESCRIPTOR.message_types_by_name['StorageReq'] = _STORAGEREQ
+DESCRIPTOR.message_types_by_name['StorageResp'] = _STORAGERESP
 DESCRIPTOR.enum_types_by_name['TxStatus'] = _TXSTATUS
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+RegisterReq = _reflection.GeneratedProtocolMessageType('RegisterReq', (_message.Message,), dict(
+  DESCRIPTOR = _REGISTERREQ,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.RegisterReq)
+  ))
+_sym_db.RegisterMessage(RegisterReq)
+
+ListenedData = _reflection.GeneratedProtocolMessageType('ListenedData', (_message.Message,), dict(
+  DESCRIPTOR = _LISTENEDDATA,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.ListenedData)
+  ))
+_sym_db.RegisterMessage(ListenedData)
+
+RegisterDetails = _reflection.GeneratedProtocolMessageType('RegisterDetails', (_message.Message,), dict(
+  DESCRIPTOR = _REGISTERDETAILS,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.RegisterDetails)
+  ))
+_sym_db.RegisterMessage(RegisterDetails)
 
 ViewTxDetailReq = _reflection.GeneratedProtocolMessageType('ViewTxDetailReq', (_message.Message,), dict(
   DESCRIPTOR = _VIEWTXDETAILREQ,
@@ -1045,6 +2049,42 @@ ListenBlocksReq = _reflection.GeneratedProtocolMessageType('ListenBlocksReq', (_
   # @@protoc_insertion_point(class_scope:rpcpb.ListenBlocksReq)
   ))
 _sym_db.RegisterMessage(ListenBlocksReq)
+
+LogsReq = _reflection.GeneratedProtocolMessageType('LogsReq', (_message.Message,), dict(
+
+  topiclist = _reflection.GeneratedProtocolMessageType('topiclist', (_message.Message,), dict(
+    DESCRIPTOR = _LOGSREQ_TOPICLIST,
+    __module__ = 'web_pb2'
+    # @@protoc_insertion_point(class_scope:rpcpb.LogsReq.topiclist)
+    ))
+  ,
+  DESCRIPTOR = _LOGSREQ,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.LogsReq)
+  ))
+_sym_db.RegisterMessage(LogsReq)
+_sym_db.RegisterMessage(LogsReq.topiclist)
+
+Logs = _reflection.GeneratedProtocolMessageType('Logs', (_message.Message,), dict(
+  DESCRIPTOR = _LOGS,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.Logs)
+  ))
+_sym_db.RegisterMessage(Logs)
+
+LogDetails = _reflection.GeneratedProtocolMessageType('LogDetails', (_message.Message,), dict(
+  DESCRIPTOR = _LOGDETAILS,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.LogDetails)
+  ))
+_sym_db.RegisterMessage(LogDetails)
+
+LogDetail = _reflection.GeneratedProtocolMessageType('LogDetail', (_message.Message,), dict(
+  DESCRIPTOR = _LOGDETAIL,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.LogDetail)
+  ))
+_sym_db.RegisterMessage(LogDetail)
 
 TxDetail = _reflection.GeneratedProtocolMessageType('TxDetail', (_message.Message,), dict(
   DESCRIPTOR = _TXDETAIL,
@@ -1109,6 +2149,13 @@ CallResp = _reflection.GeneratedProtocolMessageType('CallResp', (_message.Messag
   ))
 _sym_db.RegisterMessage(CallResp)
 
+EstimateGasResp = _reflection.GeneratedProtocolMessageType('EstimateGasResp', (_message.Message,), dict(
+  DESCRIPTOR = _ESTIMATEGASRESP,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.EstimateGasResp)
+  ))
+_sym_db.RegisterMessage(EstimateGasResp)
+
 NonceReq = _reflection.GeneratedProtocolMessageType('NonceReq', (_message.Message,), dict(
   DESCRIPTOR = _NONCEREQ,
   __module__ = 'web_pb2'
@@ -1123,6 +2170,97 @@ NonceResp = _reflection.GeneratedProtocolMessageType('NonceResp', (_message.Mess
   ))
 _sym_db.RegisterMessage(NonceResp)
 
+TableReq = _reflection.GeneratedProtocolMessageType('TableReq', (_message.Message,), dict(
+  DESCRIPTOR = _TABLEREQ,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.TableReq)
+  ))
+_sym_db.RegisterMessage(TableReq)
+
+TableResp = _reflection.GeneratedProtocolMessageType('TableResp', (_message.Message,), dict(
+  DESCRIPTOR = _TABLERESP,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.TableResp)
+  ))
+_sym_db.RegisterMessage(TableResp)
+
+PeerIDReq = _reflection.GeneratedProtocolMessageType('PeerIDReq', (_message.Message,), dict(
+  DESCRIPTOR = _PEERIDREQ,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.PeerIDReq)
+  ))
+_sym_db.RegisterMessage(PeerIDReq)
+
+PeerIDResp = _reflection.GeneratedProtocolMessageType('PeerIDResp', (_message.Message,), dict(
+  DESCRIPTOR = _PEERIDRESP,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.PeerIDResp)
+  ))
+_sym_db.RegisterMessage(PeerIDResp)
+
+MinersReq = _reflection.GeneratedProtocolMessageType('MinersReq', (_message.Message,), dict(
+  DESCRIPTOR = _MINERSREQ,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.MinersReq)
+  ))
+_sym_db.RegisterMessage(MinersReq)
+
+MinersResp = _reflection.GeneratedProtocolMessageType('MinersResp', (_message.Message,), dict(
+  DESCRIPTOR = _MINERSRESP,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.MinersResp)
+  ))
+_sym_db.RegisterMessage(MinersResp)
+
+MinerDetail = _reflection.GeneratedProtocolMessageType('MinerDetail', (_message.Message,), dict(
+  DESCRIPTOR = _MINERDETAIL,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.MinerDetail)
+  ))
+_sym_db.RegisterMessage(MinerDetail)
+
+GetCodeReq = _reflection.GeneratedProtocolMessageType('GetCodeReq', (_message.Message,), dict(
+  DESCRIPTOR = _GETCODEREQ,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.GetCodeReq)
+  ))
+_sym_db.RegisterMessage(GetCodeReq)
+
+GetCodeResp = _reflection.GeneratedProtocolMessageType('GetCodeResp', (_message.Message,), dict(
+  DESCRIPTOR = _GETCODERESP,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.GetCodeResp)
+  ))
+_sym_db.RegisterMessage(GetCodeResp)
+
+GasPriceReq = _reflection.GeneratedProtocolMessageType('GasPriceReq', (_message.Message,), dict(
+  DESCRIPTOR = _GASPRICEREQ,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.GasPriceReq)
+  ))
+_sym_db.RegisterMessage(GasPriceReq)
+
+GasPriceResp = _reflection.GeneratedProtocolMessageType('GasPriceResp', (_message.Message,), dict(
+  DESCRIPTOR = _GASPRICERESP,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.GasPriceResp)
+  ))
+_sym_db.RegisterMessage(GasPriceResp)
+
+StorageReq = _reflection.GeneratedProtocolMessageType('StorageReq', (_message.Message,), dict(
+  DESCRIPTOR = _STORAGEREQ,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.StorageReq)
+  ))
+_sym_db.RegisterMessage(StorageReq)
+
+StorageResp = _reflection.GeneratedProtocolMessageType('StorageResp', (_message.Message,), dict(
+  DESCRIPTOR = _STORAGERESP,
+  __module__ = 'web_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.StorageResp)
+  ))
+_sym_db.RegisterMessage(StorageResp)
+
 
 
 _WEBAPI = _descriptor.ServiceDescriptor(
@@ -1131,8 +2269,8 @@ _WEBAPI = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=1970,
-  serialized_end=2275,
+  serialized_start=3410,
+  serialized_end=4091,
   methods=[
   _descriptor.MethodDescriptor(
     name='ViewTxDetail',
@@ -1153,30 +2291,102 @@ _WEBAPI = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
-    name='ListenAndReadNewBlock',
-    full_name='rpcpb.WebApi.ListenAndReadNewBlock',
-    index=2,
-    containing_service=None,
-    input_type=_LISTENBLOCKSREQ,
-    output_type=_BLOCKDETAIL,
-    serialized_options=None,
-  ),
-  _descriptor.MethodDescriptor(
     name='DoCall',
     full_name='rpcpb.WebApi.DoCall',
-    index=3,
+    index=2,
     containing_service=None,
     input_type=_CALLREQ,
     output_type=_CALLRESP,
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
+    name='GetCode',
+    full_name='rpcpb.WebApi.GetCode',
+    index=3,
+    containing_service=None,
+    input_type=_GETCODEREQ,
+    output_type=_GETCODERESP,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GasPrice',
+    full_name='rpcpb.WebApi.GasPrice',
+    index=4,
+    containing_service=None,
+    input_type=_GASPRICEREQ,
+    output_type=_GASPRICERESP,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='EstimateGas',
+    full_name='rpcpb.WebApi.EstimateGas',
+    index=5,
+    containing_service=None,
+    input_type=_CALLREQ,
+    output_type=_ESTIMATEGASRESP,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetStorageAt',
+    full_name='rpcpb.WebApi.GetStorageAt',
+    index=6,
+    containing_service=None,
+    input_type=_STORAGEREQ,
+    output_type=_STORAGERESP,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
     name='Nonce',
     full_name='rpcpb.WebApi.Nonce',
-    index=4,
+    index=7,
     containing_service=None,
     input_type=_NONCEREQ,
     output_type=_NONCERESP,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetLogs',
+    full_name='rpcpb.WebApi.GetLogs',
+    index=8,
+    containing_service=None,
+    input_type=_LOGSREQ,
+    output_type=_LOGS,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Connect',
+    full_name='rpcpb.WebApi.Connect',
+    index=9,
+    containing_service=None,
+    input_type=_REGISTERREQ,
+    output_type=_LISTENEDDATA,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Table',
+    full_name='rpcpb.WebApi.Table',
+    index=10,
+    containing_service=None,
+    input_type=_TABLEREQ,
+    output_type=_TABLERESP,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='PeerID',
+    full_name='rpcpb.WebApi.PeerID',
+    index=11,
+    containing_service=None,
+    input_type=_PEERIDREQ,
+    output_type=_PEERIDRESP,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Miners',
+    full_name='rpcpb.WebApi.Miners',
+    index=12,
+    containing_service=None,
+    input_type=_MINERSREQ,
+    output_type=_MINERSRESP,
     serialized_options=None,
   ),
 ])

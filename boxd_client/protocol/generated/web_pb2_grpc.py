@@ -24,20 +24,60 @@ class WebApiStub(object):
         request_serializer=web__pb2.ViewBlockDetailReq.SerializeToString,
         response_deserializer=web__pb2.ViewBlockDetailResp.FromString,
         )
-    self.ListenAndReadNewBlock = channel.unary_stream(
-        '/rpcpb.WebApi/ListenAndReadNewBlock',
-        request_serializer=web__pb2.ListenBlocksReq.SerializeToString,
-        response_deserializer=web__pb2.BlockDetail.FromString,
-        )
     self.DoCall = channel.unary_unary(
         '/rpcpb.WebApi/DoCall',
         request_serializer=web__pb2.CallReq.SerializeToString,
         response_deserializer=web__pb2.CallResp.FromString,
         )
+    self.GetCode = channel.unary_unary(
+        '/rpcpb.WebApi/GetCode',
+        request_serializer=web__pb2.GetCodeReq.SerializeToString,
+        response_deserializer=web__pb2.GetCodeResp.FromString,
+        )
+    self.GasPrice = channel.unary_unary(
+        '/rpcpb.WebApi/GasPrice',
+        request_serializer=web__pb2.GasPriceReq.SerializeToString,
+        response_deserializer=web__pb2.GasPriceResp.FromString,
+        )
+    self.EstimateGas = channel.unary_unary(
+        '/rpcpb.WebApi/EstimateGas',
+        request_serializer=web__pb2.CallReq.SerializeToString,
+        response_deserializer=web__pb2.EstimateGasResp.FromString,
+        )
+    self.GetStorageAt = channel.unary_unary(
+        '/rpcpb.WebApi/GetStorageAt',
+        request_serializer=web__pb2.StorageReq.SerializeToString,
+        response_deserializer=web__pb2.StorageResp.FromString,
+        )
     self.Nonce = channel.unary_unary(
         '/rpcpb.WebApi/Nonce',
         request_serializer=web__pb2.NonceReq.SerializeToString,
         response_deserializer=web__pb2.NonceResp.FromString,
+        )
+    self.GetLogs = channel.unary_unary(
+        '/rpcpb.WebApi/GetLogs',
+        request_serializer=web__pb2.LogsReq.SerializeToString,
+        response_deserializer=web__pb2.Logs.FromString,
+        )
+    self.Connect = channel.stream_stream(
+        '/rpcpb.WebApi/Connect',
+        request_serializer=web__pb2.RegisterReq.SerializeToString,
+        response_deserializer=web__pb2.ListenedData.FromString,
+        )
+    self.Table = channel.unary_unary(
+        '/rpcpb.WebApi/Table',
+        request_serializer=web__pb2.TableReq.SerializeToString,
+        response_deserializer=web__pb2.TableResp.FromString,
+        )
+    self.PeerID = channel.unary_unary(
+        '/rpcpb.WebApi/PeerID',
+        request_serializer=web__pb2.PeerIDReq.SerializeToString,
+        response_deserializer=web__pb2.PeerIDResp.FromString,
+        )
+    self.Miners = channel.unary_unary(
+        '/rpcpb.WebApi/Miners',
+        request_serializer=web__pb2.MinersReq.SerializeToString,
+        response_deserializer=web__pb2.MinersResp.FromString,
         )
 
 
@@ -69,13 +109,6 @@ class WebApiServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
-  def ListenAndReadNewBlock(self, request, context):
-    # missing associated documentation comment in .proto file
-    pass
-    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-    context.set_details('Method not implemented!')
-    raise NotImplementedError('Method not implemented!')
-
   def DoCall(self, request, context):
     """rpc DoCall (CallReq) returns (CallResp) {
     option (google.api.http) = {
@@ -88,10 +121,113 @@ class WebApiServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetCode(self, request, context):
+    """rpc GetCode (GetCodeReq) returns (GetCodeResp) {
+    option (google.api.http) = {
+    post: "/v1/contract/code"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GasPrice(self, request, context):
+    """rpc GasPrice (GasPriceReq) returns (GasPriceResp) {
+    option (google.api.http) = {
+    post: "/v1/contract/gasPrice"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def EstimateGas(self, request, context):
+    """rpc EstimateGas (CallReq) returns (EstimateGasResp) {
+    option (google.api.http) = {
+    post: "/v1/contract/estimateGas"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetStorageAt(self, request, context):
+    """rpc GetStorageAt (StorageReq) returns (StorageResp) {
+    option (google.api.http) = {
+    post: "/v1/contract/getStorageAt"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
   def Nonce(self, request, context):
     """rpc Nonce (NonceReq) returns (NonceResp) {
     option (google.api.http) = {
     post: "/v1/account/nonce"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetLogs(self, request, context):
+    """rpc GetLogs (LogsReq) returns (Logs) {
+    option (google.api.http) = {
+    post: "/v1/contract/getLogs"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def Connect(self, request_iterator, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def Table(self, request, context):
+    """rpc Table (TableReq) returns (TableResp) {
+    option (google.api.http) = {
+    post: "/v1/p2p/table"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def PeerID(self, request, context):
+    """rpc PeerID (PeerIDReq) returns (PeerIDResp) {
+    option (google.api.http) = {
+    post: "/v1/p2p/id"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def Miners(self, request, context):
+    """rpc Miners (MinersReq) returns (MinersResp) {
+    option (google.api.http) = {
+    post: "/v1/miners"
     body: "*"
     };
     }
@@ -113,20 +249,60 @@ def add_WebApiServicer_to_server(servicer, server):
           request_deserializer=web__pb2.ViewBlockDetailReq.FromString,
           response_serializer=web__pb2.ViewBlockDetailResp.SerializeToString,
       ),
-      'ListenAndReadNewBlock': grpc.unary_stream_rpc_method_handler(
-          servicer.ListenAndReadNewBlock,
-          request_deserializer=web__pb2.ListenBlocksReq.FromString,
-          response_serializer=web__pb2.BlockDetail.SerializeToString,
-      ),
       'DoCall': grpc.unary_unary_rpc_method_handler(
           servicer.DoCall,
           request_deserializer=web__pb2.CallReq.FromString,
           response_serializer=web__pb2.CallResp.SerializeToString,
       ),
+      'GetCode': grpc.unary_unary_rpc_method_handler(
+          servicer.GetCode,
+          request_deserializer=web__pb2.GetCodeReq.FromString,
+          response_serializer=web__pb2.GetCodeResp.SerializeToString,
+      ),
+      'GasPrice': grpc.unary_unary_rpc_method_handler(
+          servicer.GasPrice,
+          request_deserializer=web__pb2.GasPriceReq.FromString,
+          response_serializer=web__pb2.GasPriceResp.SerializeToString,
+      ),
+      'EstimateGas': grpc.unary_unary_rpc_method_handler(
+          servicer.EstimateGas,
+          request_deserializer=web__pb2.CallReq.FromString,
+          response_serializer=web__pb2.EstimateGasResp.SerializeToString,
+      ),
+      'GetStorageAt': grpc.unary_unary_rpc_method_handler(
+          servicer.GetStorageAt,
+          request_deserializer=web__pb2.StorageReq.FromString,
+          response_serializer=web__pb2.StorageResp.SerializeToString,
+      ),
       'Nonce': grpc.unary_unary_rpc_method_handler(
           servicer.Nonce,
           request_deserializer=web__pb2.NonceReq.FromString,
           response_serializer=web__pb2.NonceResp.SerializeToString,
+      ),
+      'GetLogs': grpc.unary_unary_rpc_method_handler(
+          servicer.GetLogs,
+          request_deserializer=web__pb2.LogsReq.FromString,
+          response_serializer=web__pb2.Logs.SerializeToString,
+      ),
+      'Connect': grpc.stream_stream_rpc_method_handler(
+          servicer.Connect,
+          request_deserializer=web__pb2.RegisterReq.FromString,
+          response_serializer=web__pb2.ListenedData.SerializeToString,
+      ),
+      'Table': grpc.unary_unary_rpc_method_handler(
+          servicer.Table,
+          request_deserializer=web__pb2.TableReq.FromString,
+          response_serializer=web__pb2.TableResp.SerializeToString,
+      ),
+      'PeerID': grpc.unary_unary_rpc_method_handler(
+          servicer.PeerID,
+          request_deserializer=web__pb2.PeerIDReq.FromString,
+          response_serializer=web__pb2.PeerIDResp.SerializeToString,
+      ),
+      'Miners': grpc.unary_unary_rpc_method_handler(
+          servicer.Miners,
+          request_deserializer=web__pb2.MinersReq.FromString,
+          response_serializer=web__pb2.MinersResp.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

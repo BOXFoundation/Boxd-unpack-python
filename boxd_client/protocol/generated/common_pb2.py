@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='rpcpb',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x0c\x63ommon.proto\x12\x05rpcpb\x1a\x0b\x62lock.proto\"\x87\x01\n\x04Utxo\x12#\n\tout_point\x18\x01 \x01(\x0b\x32\x10.corepb.OutPoint\x12\x1d\n\x06tx_out\x18\x02 \x01(\x0b\x32\r.corepb.TxOut\x12\x14\n\x0c\x62lock_height\x18\x03 \x01(\r\x12\x13\n\x0bis_coinbase\x18\x04 \x01(\x08\x12\x10\n\x08is_spent\x18\x05 \x01(\x08\"-\n\x0c\x42\x61seResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\tb\x06proto3')
+  serialized_pb=_b('\n\x0c\x63ommon.proto\x12\x05rpcpb\x1a\x0b\x62lock.proto\"r\n\x04Utxo\x12#\n\tout_point\x18\x01 \x01(\x0b\x32\x10.corepb.OutPoint\x12\x1d\n\x06tx_out\x18\x02 \x01(\x0b\x32\r.corepb.TxOut\x12\x14\n\x0c\x62lock_height\x18\x03 \x01(\r\x12\x10\n\x08is_spent\x18\x04 \x01(\x08\"-\n\x0c\x42\x61seResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\tb\x06proto3')
   ,
   dependencies=[block__pb2.DESCRIPTOR,])
 
@@ -56,15 +56,8 @@ _UTXO = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
-      name='is_coinbase', full_name='rpcpb.Utxo.is_coinbase', index=3,
+      name='is_spent', full_name='rpcpb.Utxo.is_spent', index=3,
       number=4, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='is_spent', full_name='rpcpb.Utxo.is_spent', index=4,
-      number=5, type=8, cpp_type=7, label=1,
       has_default_value=False, default_value=False,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -81,8 +74,8 @@ _UTXO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37,
-  serialized_end=172,
+  serialized_start=36,
+  serialized_end=150,
 )
 
 
@@ -119,8 +112,8 @@ _BASERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=174,
-  serialized_end=219,
+  serialized_start=152,
+  serialized_end=197,
 )
 
 _UTXO.fields_by_name['out_point'].message_type = block__pb2._OUTPOINT

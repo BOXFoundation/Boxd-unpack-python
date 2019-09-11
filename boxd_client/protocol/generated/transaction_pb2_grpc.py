@@ -57,7 +57,7 @@ class TransactionCommandStub(object):
     self.MakeUnsignedSplitAddrTx = channel.unary_unary(
         '/rpcpb.TransactionCommand/MakeUnsignedSplitAddrTx',
         request_serializer=transaction__pb2.MakeSplitAddrTxReq.SerializeToString,
-        response_deserializer=transaction__pb2.MakeSplitAddrTxResp.FromString,
+        response_deserializer=transaction__pb2.MakeTxResp.FromString,
         )
     self.MakeUnsignedTokenIssueTx = channel.unary_unary(
         '/rpcpb.TransactionCommand/MakeUnsignedTokenIssueTx',
@@ -73,6 +73,11 @@ class TransactionCommandStub(object):
         '/rpcpb.TransactionCommand/MakeUnsignedContractTx',
         request_serializer=transaction__pb2.MakeContractTxReq.SerializeToString,
         response_deserializer=transaction__pb2.MakeContractTxResp.FromString,
+        )
+    self.MakeUnsignedCombineTx = channel.unary_unary(
+        '/rpcpb.TransactionCommand/MakeUnsignedCombineTx',
+        request_serializer=transaction__pb2.MakeCombineTx.SerializeToString,
+        response_deserializer=transaction__pb2.MakeTxResp.FromString,
         )
 
 
@@ -177,7 +182,7 @@ class TransactionCommandServicer(object):
     raise NotImplementedError('Method not implemented!')
 
   def MakeUnsignedSplitAddrTx(self, request, context):
-    """rpc MakeUnsignedSplitAddrTx (MakeSplitAddrTxReq) returns (MakeSplitAddrTxResp) {
+    """rpc MakeUnsignedSplitAddrTx (MakeSplitAddrTxReq) returns (MakeTxResp) {
     option (google.api.http) = {
     post: "/v1/tx/makeunsignedtx/splitaddr"
     body: "*"
@@ -216,6 +221,18 @@ class TransactionCommandServicer(object):
     """rpc MakeUnsignedContractTx (MakeContractTxReq) returns (MakeContractTxResp) {
     option (google.api.http) = {
     post: "/v1/tx/makeunsignedtx/contract"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def MakeUnsignedCombineTx(self, request, context):
+    """rpc MakeUnsignedCombineTx (MakeCombineTx) returns (MakeTxResp) {
+    option (google.api.http) = {
+    post: "/v1/tx/makeunsignedtx/combine"
     body: "*"
     };
     }
@@ -270,7 +287,7 @@ def add_TransactionCommandServicer_to_server(servicer, server):
       'MakeUnsignedSplitAddrTx': grpc.unary_unary_rpc_method_handler(
           servicer.MakeUnsignedSplitAddrTx,
           request_deserializer=transaction__pb2.MakeSplitAddrTxReq.FromString,
-          response_serializer=transaction__pb2.MakeSplitAddrTxResp.SerializeToString,
+          response_serializer=transaction__pb2.MakeTxResp.SerializeToString,
       ),
       'MakeUnsignedTokenIssueTx': grpc.unary_unary_rpc_method_handler(
           servicer.MakeUnsignedTokenIssueTx,
@@ -286,6 +303,11 @@ def add_TransactionCommandServicer_to_server(servicer, server):
           servicer.MakeUnsignedContractTx,
           request_deserializer=transaction__pb2.MakeContractTxReq.FromString,
           response_serializer=transaction__pb2.MakeContractTxResp.SerializeToString,
+      ),
+      'MakeUnsignedCombineTx': grpc.unary_unary_rpc_method_handler(
+          servicer.MakeUnsignedCombineTx,
+          request_deserializer=transaction__pb2.MakeCombineTx.FromString,
+          response_serializer=transaction__pb2.MakeTxResp.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
