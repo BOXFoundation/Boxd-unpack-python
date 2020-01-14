@@ -9,7 +9,7 @@ Boxd-unpack-python is a python library for working with integrating with clients
 ## QuickStart
 
 ```
-from boxd_client.boxd_client import BoxdClient
+from boxd_client.protocol.rpc.boxd_client import BoxdClient
 boxd = BoxdClient("39.97.169.1", 19111)
 
 # get current block height
