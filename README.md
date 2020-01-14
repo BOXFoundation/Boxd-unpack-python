@@ -1,6 +1,7 @@
 # boxd-unpack-python
 
-Boxd-unpack-python is a python library for working with integrating with clients(Boxd Rpc Node) on the Boxd network.
+Boxd-unpack-python is a python library for working with integrating with clients(Boxd Rpc Node) on the Boxd network. For further information on Boxdclient, please refer to the [boxd wiki](https://github.com/BOXFoundation/boxd/wiki/CententBox-RPC-Lists) page.
+
 
 ## Installation
 
