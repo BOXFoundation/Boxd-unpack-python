@@ -21,7 +21,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='rpcpb',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\x11transaction.proto\x12\x05rpcpb\x1a\x0b\x62lock.proto\x1a\x0c\x63ommon.proto\"#\n\x15SendRawTransactionReq\x12\n\n\x02tx\x18\x01 \x01(\t\"\x1e\n\rGetBalanceReq\x12\r\n\x05\x61\x64\x64rs\x18\x01 \x03(\t\"A\n\x0eGetBalanceResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x10\n\x08\x62\x61lances\x18\x03 \x03(\x04\"L\n\x12GetTokenBalanceReq\x12\r\n\x05\x61\x64\x64rs\x18\x01 \x03(\t\x12\x12\n\ntoken_hash\x18\x02 \x01(\t\x12\x13\n\x0btoken_index\x18\x03 \x01(\r\"V\n\rFetchUtxosReq\x12\x0c\n\x04\x61\x64\x64r\x18\x01 \x01(\t\x12\x0e\n\x06\x61mount\x18\x02 \x01(\x04\x12\x12\n\ntoken_hash\x18\x03 \x01(\t\x12\x13\n\x0btoken_index\x18\x04 \x01(\r\"K\n\x0e\x46\x65tchUtxosResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1a\n\x05utxos\x18\x03 \x03(\x0b\x32\x0b.rpcpb.Utxo\"(\n\x18GetRawTransactionRequest\x12\x0c\n\x04hash\x18\x01 \x01(\x0c\"<\n\x19GetRawTransactionResponse\x12\x1f\n\x02tx\x18\x01 \x01(\x0b\x32\x13.corepb.Transaction\"5\n\x12SendTransactionReq\x12\x1f\n\x02tx\x18\x01 \x01(\x0b\x32\x13.corepb.Transaction\"B\n\x13SendTransactionResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0c\n\x04hash\x18\x03 \x01(\t\"\x14\n\x12GetFeePriceRequest\"+\n\x13GetFeePriceResponse\x12\x14\n\x0c\x62ox_per_byte\x18\x01 \x01(\x04\"C\n\tMakeTxReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\n\n\x02to\x18\x02 \x03(\t\x12\x0f\n\x07\x61mounts\x18\x03 \x03(\x04\x12\x0b\n\x03\x66\x65\x65\x18\x04 \x01(\x04\"]\n\nMakeTxResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1f\n\x02tx\x18\x03 \x01(\x0b\x32\x13.corepb.Transaction\x12\x0f\n\x07rawMsgs\x18\x04 \x03(\x0c\"O\n\x12MakeSplitAddrTxReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\r\n\x05\x61\x64\x64rs\x18\x02 \x03(\t\x12\x0f\n\x07weights\x18\x03 \x03(\x04\x12\x0b\n\x03\x66\x65\x65\x18\x04 \x01(\x04\"y\n\x13MakeSplitAddrTxResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x11\n\tsplitAddr\x18\x03 \x01(\t\x12\x1f\n\x02tx\x18\x04 \x01(\x0b\x32\x13.corepb.Transaction\x12\x0f\n\x07rawMsgs\x18\x05 \x03(\x0c\"_\n\x13MakeTokenIssueTxReq\x12\x0e\n\x06issuer\x18\x01 \x01(\t\x12\r\n\x05owner\x18\x02 \x01(\t\x12\x1c\n\x03tag\x18\x03 \x01(\x0b\x32\x0f.rpcpb.TokenTag\x12\x0b\n\x03\x66\x65\x65\x18\x04 \x01(\x04\"\x80\x01\n\x14MakeTokenIssueTxResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x17\n\x0fissue_out_index\x18\x03 \x01(\r\x12\x1f\n\x02tx\x18\x04 \x01(\x0b\x32\x13.corepb.Transaction\x12\x0f\n\x07rawMsgs\x18\x05 \x03(\x0c\"y\n\x16MakeTokenTransferTxReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\n\n\x02to\x18\x02 \x03(\t\x12\x0f\n\x07\x61mounts\x18\x03 \x03(\x04\x12\x12\n\ntoken_hash\x18\x04 \x01(\t\x12\x13\n\x0btoken_index\x18\x05 \x01(\r\x12\x0b\n\x03\x66\x65\x65\x18\x06 \x01(\x04\"I\n\x08TokenTag\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06symbol\x18\x02 \x01(\t\x12\x0e\n\x06supply\x18\x03 \x01(\x04\x12\x0f\n\x07\x64\x65\x63imal\x18\x04 \x01(\r2\xb6\x06\n\x12TransactionCommand\x12\x39\n\nGetBalance\x12\x14.rpcpb.GetBalanceReq\x1a\x15.rpcpb.GetBalanceResp\x12\x43\n\x0fGetTokenBalance\x12\x19.rpcpb.GetTokenBalanceReq\x1a\x15.rpcpb.GetBalanceResp\x12\x39\n\nFetchUtxos\x12\x14.rpcpb.FetchUtxosReq\x1a\x15.rpcpb.FetchUtxosResp\x12H\n\x0fSendTransaction\x12\x19.rpcpb.SendTransactionReq\x1a\x1a.rpcpb.SendTransactionResp\x12V\n\x11GetRawTransaction\x12\x1f.rpcpb.GetRawTransactionRequest\x1a .rpcpb.GetRawTransactionResponse\x12\x44\n\x0bGetFeePrice\x12\x19.rpcpb.GetFeePriceRequest\x1a\x1a.rpcpb.GetFeePriceResponse\x12\x35\n\x0eMakeUnsignedTx\x12\x10.rpcpb.MakeTxReq\x1a\x11.rpcpb.MakeTxResp\x12P\n\x17MakeUnsignedSplitAddrTx\x12\x19.rpcpb.MakeSplitAddrTxReq\x1a\x1a.rpcpb.MakeSplitAddrTxResp\x12S\n\x18MakeUnsignedTokenIssueTx\x12\x1a.rpcpb.MakeTokenIssueTxReq\x1a\x1b.rpcpb.MakeTokenIssueTxResp\x12N\n\x12SendRawTransaction\x12\x1c.rpcpb.SendRawTransactionReq\x1a\x1a.rpcpb.SendTransactionResp\x12O\n\x1bMakeUnsignedTokenTransferTx\x12\x1d.rpcpb.MakeTokenTransferTxReq\x1a\x11.rpcpb.MakeTxRespb\x06proto3')
+  serialized_pb=_b('\n\x11transaction.proto\x12\x05rpcpb\x1a\x0b\x62lock.proto\x1a\x0c\x63ommon.proto\"#\n\x15SendRawTransactionReq\x12\n\n\x02tx\x18\x01 \x01(\t\"\x1e\n\rGetBalanceReq\x12\r\n\x05\x61\x64\x64rs\x18\x01 \x03(\t\"A\n\x0eGetBalanceResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x10\n\x08\x62\x61lances\x18\x03 \x03(\x04\"L\n\x12GetTokenBalanceReq\x12\r\n\x05\x61\x64\x64rs\x18\x01 \x03(\t\x12\x12\n\ntoken_hash\x18\x02 \x01(\t\x12\x13\n\x0btoken_index\x18\x03 \x01(\r\"V\n\rFetchUtxosReq\x12\x0c\n\x04\x61\x64\x64r\x18\x01 \x01(\t\x12\x0e\n\x06\x61mount\x18\x02 \x01(\x04\x12\x12\n\ntoken_hash\x18\x03 \x01(\t\x12\x13\n\x0btoken_index\x18\x04 \x01(\r\"K\n\x0e\x46\x65tchUtxosResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1a\n\x05utxos\x18\x03 \x03(\x0b\x32\x0b.rpcpb.Utxo\"(\n\x18GetRawTransactionRequest\x12\x0c\n\x04hash\x18\x01 \x01(\x0c\"[\n\x19GetRawTransactionResponse\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1f\n\x02tx\x18\x03 \x01(\x0b\x32\x13.corepb.Transaction\"5\n\x12SendTransactionReq\x12\x1f\n\x02tx\x18\x01 \x01(\x0b\x32\x13.corepb.Transaction\"B\n\x13SendTransactionResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x0c\n\x04hash\x18\x03 \x01(\t\"\x14\n\x12GetFeePriceRequest\"+\n\x13GetFeePriceResponse\x12\x14\n\x0c\x62ox_per_byte\x18\x01 \x01(\x04\"6\n\tMakeTxReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\n\n\x02to\x18\x02 \x03(\t\x12\x0f\n\x07\x61mounts\x18\x03 \x03(\x04\"]\n\nMakeTxResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1f\n\x02tx\x18\x03 \x01(\x0b\x32\x13.corepb.Transaction\x12\x0f\n\x07rawMsgs\x18\x04 \x03(\x0c\"B\n\x12MakeSplitAddrTxReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\r\n\x05\x61\x64\x64rs\x18\x02 \x03(\t\x12\x0f\n\x07weights\x18\x03 \x03(\r\"R\n\x13MakeTokenIssueTxReq\x12\x0e\n\x06issuer\x18\x01 \x01(\t\x12\r\n\x05owner\x18\x02 \x01(\t\x12\x1c\n\x03tag\x18\x03 \x01(\x0b\x32\x0f.rpcpb.TokenTag\"\x80\x01\n\x14MakeTokenIssueTxResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x17\n\x0fissue_out_index\x18\x03 \x01(\r\x12\x1f\n\x02tx\x18\x04 \x01(\x0b\x32\x13.corepb.Transaction\x12\x0f\n\x07rawMsgs\x18\x05 \x03(\x0c\"l\n\x16MakeTokenTransferTxReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\n\n\x02to\x18\x02 \x03(\t\x12\x0f\n\x07\x61mounts\x18\x03 \x03(\x04\x12\x12\n\ntoken_hash\x18\x04 \x01(\t\x12\x13\n\x0btoken_index\x18\x05 \x01(\r\"I\n\x08TokenTag\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06symbol\x18\x02 \x01(\t\x12\x0e\n\x06supply\x18\x03 \x01(\x04\x12\x0f\n\x07\x64\x65\x63imal\x18\x04 \x01(\r\"\x80\x01\n\x11MakeContractTxReq\x12\x0c\n\x04\x66rom\x18\x01 \x01(\t\x12\n\n\x02to\x18\x02 \x01(\t\x12\x0e\n\x06\x61mount\x18\x03 \x01(\x04\x12\x11\n\tgas_limit\x18\x04 \x01(\x04\x12\r\n\x05nonce\x18\x05 \x01(\x04\x12\x11\n\tis_deploy\x18\x06 \x01(\x08\x12\x0c\n\x04\x64\x61ta\x18\x07 \x01(\t\"|\n\x12MakeContractTxResp\x12\x0c\n\x04\x63ode\x18\x01 \x01(\x05\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x1f\n\x02tx\x18\x03 \x01(\x0b\x32\x13.corepb.Transaction\x12\x0f\n\x07rawMsgs\x18\x04 \x03(\x0c\x12\x15\n\rcontract_addr\x18\x05 \x01(\t\"F\n\rMakeCombineTx\x12\x0c\n\x04\x61\x64\x64r\x18\x01 \x01(\t\x12\x12\n\ntoken_hash\x18\x02 \x01(\t\x12\x13\n\x0btoken_index\x18\x03 \x01(\r2\xbe\x07\n\x12TransactionCommand\x12\x39\n\nGetBalance\x12\x14.rpcpb.GetBalanceReq\x1a\x15.rpcpb.GetBalanceResp\x12\x43\n\x0fGetTokenBalance\x12\x19.rpcpb.GetTokenBalanceReq\x1a\x15.rpcpb.GetBalanceResp\x12\x39\n\nFetchUtxos\x12\x14.rpcpb.FetchUtxosReq\x1a\x15.rpcpb.FetchUtxosResp\x12H\n\x0fSendTransaction\x12\x19.rpcpb.SendTransactionReq\x1a\x1a.rpcpb.SendTransactionResp\x12N\n\x12SendRawTransaction\x12\x1c.rpcpb.SendRawTransactionReq\x1a\x1a.rpcpb.SendTransactionResp\x12V\n\x11GetRawTransaction\x12\x1f.rpcpb.GetRawTransactionRequest\x1a .rpcpb.GetRawTransactionResponse\x12\x44\n\x0bGetFeePrice\x12\x19.rpcpb.GetFeePriceRequest\x1a\x1a.rpcpb.GetFeePriceResponse\x12\x35\n\x0eMakeUnsignedTx\x12\x10.rpcpb.MakeTxReq\x1a\x11.rpcpb.MakeTxResp\x12G\n\x17MakeUnsignedSplitAddrTx\x12\x19.rpcpb.MakeSplitAddrTxReq\x1a\x11.rpcpb.MakeTxResp\x12S\n\x18MakeUnsignedTokenIssueTx\x12\x1a.rpcpb.MakeTokenIssueTxReq\x1a\x1b.rpcpb.MakeTokenIssueTxResp\x12O\n\x1bMakeUnsignedTokenTransferTx\x12\x1d.rpcpb.MakeTokenTransferTxReq\x1a\x11.rpcpb.MakeTxResp\x12M\n\x16MakeUnsignedContractTx\x12\x18.rpcpb.MakeContractTxReq\x1a\x19.rpcpb.MakeContractTxResp\x12@\n\x15MakeUnsignedCombineTx\x12\x14.rpcpb.MakeCombineTx\x1a\x11.rpcpb.MakeTxRespb\x06proto3')
   ,
   dependencies=[block__pb2.DESCRIPTOR,common__pb2.DESCRIPTOR,])
 
@@ -316,8 +316,22 @@ _GETRAWTRANSACTIONRESPONSE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='tx', full_name='rpcpb.GetRawTransactionResponse.tx', index=0,
-      number=1, type=11, cpp_type=10, label=1,
+      name='code', full_name='rpcpb.GetRawTransactionResponse.code', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='rpcpb.GetRawTransactionResponse.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='tx', full_name='rpcpb.GetRawTransactionResponse.tx', index=2,
+      number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -335,7 +349,7 @@ _GETRAWTRANSACTIONRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=476,
-  serialized_end=536,
+  serialized_end=567,
 )
 
 
@@ -365,8 +379,8 @@ _SENDTRANSACTIONREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=538,
-  serialized_end=591,
+  serialized_start=569,
+  serialized_end=622,
 )
 
 
@@ -410,8 +424,8 @@ _SENDTRANSACTIONRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=593,
-  serialized_end=659,
+  serialized_start=624,
+  serialized_end=690,
 )
 
 
@@ -434,8 +448,8 @@ _GETFEEPRICEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=661,
-  serialized_end=681,
+  serialized_start=692,
+  serialized_end=712,
 )
 
 
@@ -465,8 +479,8 @@ _GETFEEPRICERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=683,
-  serialized_end=726,
+  serialized_start=714,
+  serialized_end=757,
 )
 
 
@@ -498,13 +512,6 @@ _MAKETXREQ = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='fee', full_name='rpcpb.MakeTxReq.fee', index=3,
-      number=4, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -517,8 +524,8 @@ _MAKETXREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=728,
-  serialized_end=795,
+  serialized_start=759,
+  serialized_end=813,
 )
 
 
@@ -569,8 +576,8 @@ _MAKETXRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=797,
-  serialized_end=890,
+  serialized_start=815,
+  serialized_end=908,
 )
 
 
@@ -597,73 +604,7 @@ _MAKESPLITADDRTXREQ = _descriptor.Descriptor(
       serialized_options=None, file=DESCRIPTOR),
     _descriptor.FieldDescriptor(
       name='weights', full_name='rpcpb.MakeSplitAddrTxReq.weights', index=2,
-      number=3, type=4, cpp_type=4, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='fee', full_name='rpcpb.MakeSplitAddrTxReq.fee', index=3,
-      number=4, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=892,
-  serialized_end=971,
-)
-
-
-_MAKESPLITADDRTXRESP = _descriptor.Descriptor(
-  name='MakeSplitAddrTxResp',
-  full_name='rpcpb.MakeSplitAddrTxResp',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='code', full_name='rpcpb.MakeSplitAddrTxResp.code', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='message', full_name='rpcpb.MakeSplitAddrTxResp.message', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='splitAddr', full_name='rpcpb.MakeSplitAddrTxResp.splitAddr', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='tx', full_name='rpcpb.MakeSplitAddrTxResp.tx', index=3,
-      number=4, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='rawMsgs', full_name='rpcpb.MakeSplitAddrTxResp.rawMsgs', index=4,
-      number=5, type=12, cpp_type=9, label=3,
+      number=3, type=13, cpp_type=3, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -680,8 +621,8 @@ _MAKESPLITADDRTXRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=973,
-  serialized_end=1094,
+  serialized_start=910,
+  serialized_end=976,
 )
 
 
@@ -713,13 +654,6 @@ _MAKETOKENISSUETXREQ = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='fee', full_name='rpcpb.MakeTokenIssueTxReq.fee', index=3,
-      number=4, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -732,8 +666,8 @@ _MAKETOKENISSUETXREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1096,
-  serialized_end=1191,
+  serialized_start=978,
+  serialized_end=1060,
 )
 
 
@@ -791,8 +725,8 @@ _MAKETOKENISSUETXRESP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1194,
-  serialized_end=1322,
+  serialized_start=1063,
+  serialized_end=1191,
 )
 
 
@@ -838,13 +772,6 @@ _MAKETOKENTRANSFERTXREQ = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       serialized_options=None, file=DESCRIPTOR),
-    _descriptor.FieldDescriptor(
-      name='fee', full_name='rpcpb.MakeTokenTransferTxReq.fee', index=5,
-      number=6, type=4, cpp_type=4, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR),
   ],
   extensions=[
   ],
@@ -857,8 +784,8 @@ _MAKETOKENTRANSFERTXREQ = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1324,
-  serialized_end=1445,
+  serialized_start=1193,
+  serialized_end=1301,
 )
 
 
@@ -909,17 +836,194 @@ _TOKENTAG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1447,
-  serialized_end=1520,
+  serialized_start=1303,
+  serialized_end=1376,
+)
+
+
+_MAKECONTRACTTXREQ = _descriptor.Descriptor(
+  name='MakeContractTxReq',
+  full_name='rpcpb.MakeContractTxReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='from', full_name='rpcpb.MakeContractTxReq.from', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='to', full_name='rpcpb.MakeContractTxReq.to', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='amount', full_name='rpcpb.MakeContractTxReq.amount', index=2,
+      number=3, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='gas_limit', full_name='rpcpb.MakeContractTxReq.gas_limit', index=3,
+      number=4, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='nonce', full_name='rpcpb.MakeContractTxReq.nonce', index=4,
+      number=5, type=4, cpp_type=4, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='is_deploy', full_name='rpcpb.MakeContractTxReq.is_deploy', index=5,
+      number=6, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='data', full_name='rpcpb.MakeContractTxReq.data', index=6,
+      number=7, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1379,
+  serialized_end=1507,
+)
+
+
+_MAKECONTRACTTXRESP = _descriptor.Descriptor(
+  name='MakeContractTxResp',
+  full_name='rpcpb.MakeContractTxResp',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='code', full_name='rpcpb.MakeContractTxResp.code', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='message', full_name='rpcpb.MakeContractTxResp.message', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='tx', full_name='rpcpb.MakeContractTxResp.tx', index=2,
+      number=3, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='rawMsgs', full_name='rpcpb.MakeContractTxResp.rawMsgs', index=3,
+      number=4, type=12, cpp_type=9, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='contract_addr', full_name='rpcpb.MakeContractTxResp.contract_addr', index=4,
+      number=5, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1509,
+  serialized_end=1633,
+)
+
+
+_MAKECOMBINETX = _descriptor.Descriptor(
+  name='MakeCombineTx',
+  full_name='rpcpb.MakeCombineTx',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='addr', full_name='rpcpb.MakeCombineTx.addr', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='token_hash', full_name='rpcpb.MakeCombineTx.token_hash', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='token_index', full_name='rpcpb.MakeCombineTx.token_index', index=2,
+      number=3, type=13, cpp_type=3, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1635,
+  serialized_end=1705,
 )
 
 _FETCHUTXOSRESP.fields_by_name['utxos'].message_type = common__pb2._UTXO
 _GETRAWTRANSACTIONRESPONSE.fields_by_name['tx'].message_type = block__pb2._TRANSACTION
 _SENDTRANSACTIONREQ.fields_by_name['tx'].message_type = block__pb2._TRANSACTION
 _MAKETXRESP.fields_by_name['tx'].message_type = block__pb2._TRANSACTION
-_MAKESPLITADDRTXRESP.fields_by_name['tx'].message_type = block__pb2._TRANSACTION
 _MAKETOKENISSUETXREQ.fields_by_name['tag'].message_type = _TOKENTAG
 _MAKETOKENISSUETXRESP.fields_by_name['tx'].message_type = block__pb2._TRANSACTION
+_MAKECONTRACTTXRESP.fields_by_name['tx'].message_type = block__pb2._TRANSACTION
 DESCRIPTOR.message_types_by_name['SendRawTransactionReq'] = _SENDRAWTRANSACTIONREQ
 DESCRIPTOR.message_types_by_name['GetBalanceReq'] = _GETBALANCEREQ
 DESCRIPTOR.message_types_by_name['GetBalanceResp'] = _GETBALANCERESP
@@ -935,11 +1039,13 @@ DESCRIPTOR.message_types_by_name['GetFeePriceResponse'] = _GETFEEPRICERESPONSE
 DESCRIPTOR.message_types_by_name['MakeTxReq'] = _MAKETXREQ
 DESCRIPTOR.message_types_by_name['MakeTxResp'] = _MAKETXRESP
 DESCRIPTOR.message_types_by_name['MakeSplitAddrTxReq'] = _MAKESPLITADDRTXREQ
-DESCRIPTOR.message_types_by_name['MakeSplitAddrTxResp'] = _MAKESPLITADDRTXRESP
 DESCRIPTOR.message_types_by_name['MakeTokenIssueTxReq'] = _MAKETOKENISSUETXREQ
 DESCRIPTOR.message_types_by_name['MakeTokenIssueTxResp'] = _MAKETOKENISSUETXRESP
 DESCRIPTOR.message_types_by_name['MakeTokenTransferTxReq'] = _MAKETOKENTRANSFERTXREQ
 DESCRIPTOR.message_types_by_name['TokenTag'] = _TOKENTAG
+DESCRIPTOR.message_types_by_name['MakeContractTxReq'] = _MAKECONTRACTTXREQ
+DESCRIPTOR.message_types_by_name['MakeContractTxResp'] = _MAKECONTRACTTXRESP
+DESCRIPTOR.message_types_by_name['MakeCombineTx'] = _MAKECOMBINETX
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 SendRawTransactionReq = _reflection.GeneratedProtocolMessageType('SendRawTransactionReq', (_message.Message,), dict(
@@ -1047,13 +1153,6 @@ MakeSplitAddrTxReq = _reflection.GeneratedProtocolMessageType('MakeSplitAddrTxRe
   ))
 _sym_db.RegisterMessage(MakeSplitAddrTxReq)
 
-MakeSplitAddrTxResp = _reflection.GeneratedProtocolMessageType('MakeSplitAddrTxResp', (_message.Message,), dict(
-  DESCRIPTOR = _MAKESPLITADDRTXRESP,
-  __module__ = 'transaction_pb2'
-  # @@protoc_insertion_point(class_scope:rpcpb.MakeSplitAddrTxResp)
-  ))
-_sym_db.RegisterMessage(MakeSplitAddrTxResp)
-
 MakeTokenIssueTxReq = _reflection.GeneratedProtocolMessageType('MakeTokenIssueTxReq', (_message.Message,), dict(
   DESCRIPTOR = _MAKETOKENISSUETXREQ,
   __module__ = 'transaction_pb2'
@@ -1082,6 +1181,27 @@ TokenTag = _reflection.GeneratedProtocolMessageType('TokenTag', (_message.Messag
   ))
 _sym_db.RegisterMessage(TokenTag)
 
+MakeContractTxReq = _reflection.GeneratedProtocolMessageType('MakeContractTxReq', (_message.Message,), dict(
+  DESCRIPTOR = _MAKECONTRACTTXREQ,
+  __module__ = 'transaction_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.MakeContractTxReq)
+  ))
+_sym_db.RegisterMessage(MakeContractTxReq)
+
+MakeContractTxResp = _reflection.GeneratedProtocolMessageType('MakeContractTxResp', (_message.Message,), dict(
+  DESCRIPTOR = _MAKECONTRACTTXRESP,
+  __module__ = 'transaction_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.MakeContractTxResp)
+  ))
+_sym_db.RegisterMessage(MakeContractTxResp)
+
+MakeCombineTx = _reflection.GeneratedProtocolMessageType('MakeCombineTx', (_message.Message,), dict(
+  DESCRIPTOR = _MAKECOMBINETX,
+  __module__ = 'transaction_pb2'
+  # @@protoc_insertion_point(class_scope:rpcpb.MakeCombineTx)
+  ))
+_sym_db.RegisterMessage(MakeCombineTx)
+
 
 
 _TRANSACTIONCOMMAND = _descriptor.ServiceDescriptor(
@@ -1090,8 +1210,8 @@ _TRANSACTIONCOMMAND = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=1523,
-  serialized_end=2345,
+  serialized_start=1708,
+  serialized_end=2666,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBalance',
@@ -1130,9 +1250,18 @@ _TRANSACTIONCOMMAND = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
+    name='SendRawTransaction',
+    full_name='rpcpb.TransactionCommand.SendRawTransaction',
+    index=4,
+    containing_service=None,
+    input_type=_SENDRAWTRANSACTIONREQ,
+    output_type=_SENDTRANSACTIONRESP,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
     name='GetRawTransaction',
     full_name='rpcpb.TransactionCommand.GetRawTransaction',
-    index=4,
+    index=5,
     containing_service=None,
     input_type=_GETRAWTRANSACTIONREQUEST,
     output_type=_GETRAWTRANSACTIONRESPONSE,
@@ -1141,7 +1270,7 @@ _TRANSACTIONCOMMAND = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='GetFeePrice',
     full_name='rpcpb.TransactionCommand.GetFeePrice',
-    index=5,
+    index=6,
     containing_service=None,
     input_type=_GETFEEPRICEREQUEST,
     output_type=_GETFEEPRICERESPONSE,
@@ -1150,7 +1279,7 @@ _TRANSACTIONCOMMAND = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='MakeUnsignedTx',
     full_name='rpcpb.TransactionCommand.MakeUnsignedTx',
-    index=6,
+    index=7,
     containing_service=None,
     input_type=_MAKETXREQ,
     output_type=_MAKETXRESP,
@@ -1159,28 +1288,19 @@ _TRANSACTIONCOMMAND = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='MakeUnsignedSplitAddrTx',
     full_name='rpcpb.TransactionCommand.MakeUnsignedSplitAddrTx',
-    index=7,
+    index=8,
     containing_service=None,
     input_type=_MAKESPLITADDRTXREQ,
-    output_type=_MAKESPLITADDRTXRESP,
+    output_type=_MAKETXRESP,
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
     name='MakeUnsignedTokenIssueTx',
     full_name='rpcpb.TransactionCommand.MakeUnsignedTokenIssueTx',
-    index=8,
+    index=9,
     containing_service=None,
     input_type=_MAKETOKENISSUETXREQ,
     output_type=_MAKETOKENISSUETXRESP,
-    serialized_options=None,
-  ),
-  _descriptor.MethodDescriptor(
-    name='SendRawTransaction',
-    full_name='rpcpb.TransactionCommand.SendRawTransaction',
-    index=9,
-    containing_service=None,
-    input_type=_SENDRAWTRANSACTIONREQ,
-    output_type=_SENDTRANSACTIONRESP,
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
@@ -1189,6 +1309,24 @@ _TRANSACTIONCOMMAND = _descriptor.ServiceDescriptor(
     index=10,
     containing_service=None,
     input_type=_MAKETOKENTRANSFERTXREQ,
+    output_type=_MAKETXRESP,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='MakeUnsignedContractTx',
+    full_name='rpcpb.TransactionCommand.MakeUnsignedContractTx',
+    index=11,
+    containing_service=None,
+    input_type=_MAKECONTRACTTXREQ,
+    output_type=_MAKECONTRACTTXRESP,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='MakeUnsignedCombineTx',
+    full_name='rpcpb.TransactionCommand.MakeUnsignedCombineTx',
+    index=12,
+    containing_service=None,
+    input_type=_MAKECOMBINETX,
     output_type=_MAKETXRESP,
     serialized_options=None,
   ),

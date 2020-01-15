@@ -49,6 +49,8 @@ from boxd_client.exception.exceptions import (
     BoxdError
 )
 
+from boxd_client.protocol.core.contract.contract import Contract
+
 
 def format_json(j):
     ciphertext = j["crypto"]["ciphertext"]
@@ -75,6 +77,7 @@ class BoxdClient:
         self.control_stub = control_rpc.ContorlCommandStub(self.channel)
         self.web_stub = web_rpc.WebApiStub(self.channel)
         self.faucet_stub = faucet_rpc.FaucetStub(self.channel)
+        self.defaultContractFactory = Contract
 
 
     #################################################################
@@ -342,6 +345,7 @@ class BoxdClient:
         resp = self.tx_stub.SendRawTransaction(req)
         if resp.code == 0:
             return resp.hash
+            print(resp.message)
         else:
             raise BoxdError(resp.message)
 
@@ -470,7 +474,7 @@ class BoxdClient:
             raise ValidationError("fee must >= 0")
 
         token = tx.TokenTag(name = name, symbol = symbol, supply = supply, decimal = decimal)
-        req = tx.MakeTokenIssueTxReq(issuer = issuer, owner = owner, tag = token, fee = fee)
+        req = tx.MakeTokenIssueTxReq(issuer = issuer, owner = owner, tag = token, gas_price = fee)
         return self.tx_stub.MakeUnsignedTokenIssueTx(req)
 
     def make_unsigned_token_transfer_tx(self, _from, to, token_hash, token_index, fee):
@@ -504,12 +508,78 @@ class BoxdClient:
             amounts.append(v)
         req = tx.MakeTokenTransferTxReq()
         setattr(req, 'from', _from)
-        setattr(req, 'fee', fee)
+        setattr(req, 'gas_price', fee)
         req.to.extend(to_addrs)
         req.amounts.extend(amounts)
         setattr(req, 'token_hash', token_hash)
         setattr(req, 'token_index', token_index)
         return self.tx_stub.MakeUnsignedTokenTransferTx(req)
+
+    #################################################################
+    ####   contract related api
+    #################################################################
+    def do_call(self, _from, to, data):
+        '''
+        message CallReq {
+            string from = 1;
+            string to = 2;
+            string data = 3;
+            uint32 height = 4;
+            uint32 timeout = 5;
+        }
+
+        :return:
+        '''
+        req = web.CallReq()
+
+        setattr(req, "from", _from)
+        setattr(req, "to", to)
+        setattr(req, "data", data)
+        setattr(req, "height", 0)
+        # setattr(req, "timeout", "")
+
+        resp =  self.web_stub.DoCall(req)
+        if resp.code == 0:
+            return resp.output
+        raise BoxdError(resp.message)
+
+    def getNonce(self, addr):
+        resp = self.web_stub.Nonce(web.NonceReq(addr=addr))
+        if resp.code == 0:
+            return resp.nonce
+        raise BoxdError(resp.message)
+
+    def make_unsigned_contract_tx(self, sender, nonce, data, amount=0, gas_price=10, gas_limit=200000, is_deployed=False, contract_addr=None):
+        if not is_valid_addr(sender):
+            raise ValidationError("Not a valid addr of from")
+
+        if nonce < 1:
+            raise ValidationError("nonce must > 0")
+
+        req = tx.MakeContractTxReq()
+        setattr(req, 'from', sender)
+
+        setattr(req, 'amount', amount)
+        setattr(req, 'gas_price', gas_price)
+        setattr(req, 'gas_limit', gas_limit)
+        setattr(req, 'nonce', nonce)
+        setattr(req, 'is_deploy', is_deployed)
+        if not is_deployed:
+            setattr(req, 'to', contract_addr)
+        setattr(req, 'data', data)
+        return self.tx_stub.MakeUnsignedContractTx(req)
+
+    def contract(self, from_address, address=None,  **kwargs):
+        ContractFactoryClass = kwargs.pop('ContractFactoryClass', self.defaultContractFactory)
+        ContractFactory = ContractFactoryClass.factory(self, from_address, **kwargs)
+
+        if address:
+            return ContractFactory(from_address, address)
+        else:
+            return ContractFactory(from_address)
+
+    def setContractFactory(self, contractFactory):
+        self.defaultContractFactory = contractFactory
 
     #################################################################
     ####   utils related api

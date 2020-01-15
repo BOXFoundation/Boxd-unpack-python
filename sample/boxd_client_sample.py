@@ -3,7 +3,8 @@
 from boxd_client.protocol.rpc.boxd_client import BoxdClient
 from google.protobuf.json_format import MessageToJson
 
-boxd = BoxdClient("39.97.169.1", 19111)
+# boxd = BoxdClient("39.97.169.1", 19111)
+boxd = BoxdClient("39.97.168.26", 19111)
 
 
 def get_block_height():
@@ -142,4 +143,8 @@ if __name__ == "__main__":
 
     balances = get_balance("b1Vc6vBWzjSp71c3c49hx3pENPL1TwU1Exy")
     print (balances)
+
+
+    nonce = boxd.getNonce("b1Vc6vBWzjSp71c3c49hx3pENPL1TwU1Exy")
+    print(nonce)
 

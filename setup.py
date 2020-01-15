@@ -7,6 +7,7 @@ from setuptools import (
 
 deps = {
     'boxd-client': [
+        "eth-abi==2.0.0b9",
         "pycryptodome>=3.6.6,<4",
         "grpcio",
         "grpcio-tools",

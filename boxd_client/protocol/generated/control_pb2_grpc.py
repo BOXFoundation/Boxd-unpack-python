@@ -61,6 +61,31 @@ class ContorlCommandStub(object):
         request_serializer=control__pb2.GetNodeInfoRequest.SerializeToString,
         response_deserializer=control__pb2.GetNodeInfoResponse.FromString,
         )
+    self.GetBlockByHeight = channel.unary_unary(
+        '/rpcpb.ContorlCommand/GetBlockByHeight',
+        request_serializer=control__pb2.GetBlockByHeightReq.SerializeToString,
+        response_deserializer=control__pb2.GetBlockResponse.FromString,
+        )
+    self.GetBlockTransactionCountByHash = channel.unary_unary(
+        '/rpcpb.ContorlCommand/GetBlockTransactionCountByHash',
+        request_serializer=control__pb2.GetBlockTransactionCountByHashReq.SerializeToString,
+        response_deserializer=control__pb2.GetBlockTxCountResp.FromString,
+        )
+    self.GetBlockTransactionCountByHeight = channel.unary_unary(
+        '/rpcpb.ContorlCommand/GetBlockTransactionCountByHeight',
+        request_serializer=control__pb2.GetBlockTransactionCountByHeightReq.SerializeToString,
+        response_deserializer=control__pb2.GetBlockTxCountResp.FromString,
+        )
+    self.GetTransactionByBlockHashAndIndex = channel.unary_unary(
+        '/rpcpb.ContorlCommand/GetTransactionByBlockHashAndIndex',
+        request_serializer=control__pb2.GetTransactionByBlockHashAndIndexReq.SerializeToString,
+        response_deserializer=control__pb2.GetTxResp.FromString,
+        )
+    self.GetTransactionByBlockHeightAndIndex = channel.unary_unary(
+        '/rpcpb.ContorlCommand/GetTransactionByBlockHeightAndIndex',
+        request_serializer=control__pb2.GetTransactionByBlockHeightAndIndexReq.SerializeToString,
+        response_deserializer=control__pb2.GetTxResp.FromString,
+        )
 
 
 class ContorlCommandServicer(object):
@@ -176,6 +201,66 @@ class ContorlCommandServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetBlockByHeight(self, request, context):
+    """rpc GetBlockByHeight (GetBlockByHeightReq) returns (GetBlockResponse) {
+    option (google.api.http) = {
+    post: "/v1/ctl/getBlockByHeight"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetBlockTransactionCountByHash(self, request, context):
+    """rpc GetBlockTransactionCountByHash (GetBlockTransactionCountByHashReq) returns (GetBlockTxCountResp) {
+    option (google.api.http) = {
+    post: "/v1/ctl/block/txCountByHash"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetBlockTransactionCountByHeight(self, request, context):
+    """rpc GetBlockTransactionCountByHeight (GetBlockTransactionCountByHeightReq) returns (GetBlockTxCountResp) {
+    option (google.api.http) = {
+    post: "/v1/ctl/block/txCountByHeight"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetTransactionByBlockHashAndIndex(self, request, context):
+    """rpc GetTransactionByBlockHashAndIndex (GetTransactionByBlockHashAndIndexReq) returns (GetTxResp) {
+    option (google.api.http) = {
+    post: "/v1/ctl/getTxByHash"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetTransactionByBlockHeightAndIndex(self, request, context):
+    """rpc GetTransactionByBlockHeightAndIndex (GetTransactionByBlockHeightAndIndexReq) returns (GetTxResp) {
+    option (google.api.http) = {
+    post: "/v1/ctl/getTxByHeight"
+    body: "*"
+    };
+    }
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_ContorlCommandServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -223,6 +308,31 @@ def add_ContorlCommandServicer_to_server(servicer, server):
           servicer.GetNodeInfo,
           request_deserializer=control__pb2.GetNodeInfoRequest.FromString,
           response_serializer=control__pb2.GetNodeInfoResponse.SerializeToString,
+      ),
+      'GetBlockByHeight': grpc.unary_unary_rpc_method_handler(
+          servicer.GetBlockByHeight,
+          request_deserializer=control__pb2.GetBlockByHeightReq.FromString,
+          response_serializer=control__pb2.GetBlockResponse.SerializeToString,
+      ),
+      'GetBlockTransactionCountByHash': grpc.unary_unary_rpc_method_handler(
+          servicer.GetBlockTransactionCountByHash,
+          request_deserializer=control__pb2.GetBlockTransactionCountByHashReq.FromString,
+          response_serializer=control__pb2.GetBlockTxCountResp.SerializeToString,
+      ),
+      'GetBlockTransactionCountByHeight': grpc.unary_unary_rpc_method_handler(
+          servicer.GetBlockTransactionCountByHeight,
+          request_deserializer=control__pb2.GetBlockTransactionCountByHeightReq.FromString,
+          response_serializer=control__pb2.GetBlockTxCountResp.SerializeToString,
+      ),
+      'GetTransactionByBlockHashAndIndex': grpc.unary_unary_rpc_method_handler(
+          servicer.GetTransactionByBlockHashAndIndex,
+          request_deserializer=control__pb2.GetTransactionByBlockHashAndIndexReq.FromString,
+          response_serializer=control__pb2.GetTxResp.SerializeToString,
+      ),
+      'GetTransactionByBlockHeightAndIndex': grpc.unary_unary_rpc_method_handler(
+          servicer.GetTransactionByBlockHeightAndIndex,
+          request_deserializer=control__pb2.GetTransactionByBlockHeightAndIndexReq.FromString,
+          response_serializer=control__pb2.GetTxResp.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
